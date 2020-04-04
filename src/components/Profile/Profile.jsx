@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './style.module.css';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
     return (
@@ -11,21 +12,7 @@ const Profile = () => {
 
             <div> avatar + description </div>
 
-            <div classNam="posts">
-               <h2>My Posts</h2>
-                <div> 
-                    <textarea defaultValue="Your News">
-                    </textarea>
-                 </div>
-                <ul>
-                    <li className={classes.item}>
-                        Post 1
-                    </li>
-                    <li className={classes.item}>
-                        Post 2
-                    </li>
-                </ul>
-            </div>
+        <MyPosts />
 
         </div>
     );
