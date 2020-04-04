@@ -17,10 +17,10 @@ const Profile = () => {
                     </textarea>
                  </div>
                 <ul>
-                    <li>
+                    <li className="item">
                         Post 1
                     </li>
-                    <li>
+                    <li className="item">
                         Post 2
                     </li>
                 </ul>

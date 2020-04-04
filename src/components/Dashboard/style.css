@@ -1,0 +1,10 @@
+.Dashboard {
+    grid-area: d;
+    background: burlywood;
+  }
+  .item {
+      color: white;
+  }
+  .item.active {
+      color: gold;
+  }

@@ -1,6 +1,8 @@
 import React from 'react';
-import Profile from './Profile';
 
+import Profile from '../Profile/Profile';
+
+import './style.css';
 
 const Main = () => {
     return (
