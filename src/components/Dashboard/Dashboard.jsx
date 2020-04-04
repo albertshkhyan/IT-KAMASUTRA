@@ -1,35 +1,35 @@
 import React from 'react';
 
-import './style.css';
+import classes from './style.module.css';
 
 const Dashboard = () => {
     return (
-        <div className="Dashboard">
+        <div className={classes.Dashboard}>
             <aside>
                 <nav>
                     <ul>
                         <li >
-                            <a className="item" href="#s">
+                            <a className={classes.item} href="#s">
                                 Profile
                             </a>
                         </li> 
                         <li >
-                            <a className="item active" href="#s">
+                            <a className={ `${classes.item} ${classes.active}` }  href="#s">
                                 Messages
                             </a>
                         </li>
                         <li >
-                            <a className="item" href="#s">
+                            <a className={classes.item} href="#s">
                                 News
                             </a>
                         </li>
                         <li >
-                            <a className="item" href="#s">
+                            <a className={classes.item} href="#s">
                                 Music
                             </a>
                         </li>
                         <li >
-                            <a className="item" href="#s">
+                            <a className={classes.item} href="#s">
                                 Settings
                             </a>
                         </li>

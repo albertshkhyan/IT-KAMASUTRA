@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './style.css';
+import classes from './style.module.css';
 
 
 const Header = () => {
     return (
-        <header className="Header">
+        <header className={classes.Header}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Oikya_Front_Logo.png" alt="" />
         </header>
     );

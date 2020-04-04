@@ -2,11 +2,11 @@ import React from 'react';
 
 import Profile from '../Profile/Profile';
 
-import './style.css';
+import classes from './style.module.css';
 
 const Main = () => {
     return (
-        <main className="Main">
+        <main className={classes.Main}>
             <Profile />
         </main>
     );
