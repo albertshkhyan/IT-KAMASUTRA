@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './style.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -9,29 +10,29 @@ const Dashboard = () => {
                 <nav>
                     <ul>
                         <li className={classes.item}>
-                            <a  href="/profile">
+                            <NavLink activeClassName={classes.activeLink}  to="/profile">
                                 Profile
-                            </a>
+                            </NavLink>
                         </li> 
-                        <li className={ `${classes.item} ${classes.active}` } >
-                            <a  href="/dialogs">
+                        <li className={classes.item} >
+                            <NavLink activeClassName={classes.activeLink}  to="/dialogs">
                                 Messages
-                            </a>
+                            </NavLink>
                         </li>
                         <li className={classes.item}>
-                            <a  href="/news">
+                            <NavLink activeClassName={classes.activeLink}  to="/news">
                                 News
-                            </a>
+                            </NavLink>
                         </li>
                         <li className={classes.item}>
-                            <a  href="/music">
+                            <NavLink activeClassName={classes.activeLink}  to="/music">
                                 Music
-                            </a>
+                            </NavLink>
                         </li>
                         <li className={classes.item}>
-                            <a  href="/settings">
+                            <NavLink activeClassName={classes.activeLink}  to="/settings">
                                 Settings
-                            </a>
+                            </NavLink>
                         </li>
 
                     </ul>
