@@ -14,7 +14,7 @@ const Dashboard = () => {
                             </a>
                         </li> 
                         <li className={ `${classes.item} ${classes.active}` } >
-                            <a  href="/messages">
+                            <a  href="/dialogs">
                                 Messages
                             </a>
                         </li>
