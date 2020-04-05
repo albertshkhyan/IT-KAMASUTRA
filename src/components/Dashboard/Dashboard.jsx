@@ -8,28 +8,28 @@ const Dashboard = () => {
             <aside>
                 <nav>
                     <ul>
-                        <li >
-                            <a className={classes.item} href="#s">
+                        <li className={classes.item}>
+                            <a  href="/profile">
                                 Profile
                             </a>
                         </li> 
-                        <li >
-                            <a className={ `${classes.item} ${classes.active}` }  href="#s">
+                        <li className={ `${classes.item} ${classes.active}` } >
+                            <a  href="/messages">
                                 Messages
                             </a>
                         </li>
-                        <li >
-                            <a className={classes.item} href="#s">
+                        <li className={classes.item}>
+                            <a  href="/news">
                                 News
                             </a>
                         </li>
-                        <li >
-                            <a className={classes.item} href="#s">
+                        <li className={classes.item}>
+                            <a  href="/music">
                                 Music
                             </a>
                         </li>
-                        <li >
-                            <a className={classes.item} href="#s">
+                        <li className={classes.item}>
+                            <a  href="/settings">
                                 Settings
                             </a>
                         </li>

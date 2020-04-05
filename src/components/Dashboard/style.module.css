@@ -2,9 +2,9 @@
     grid-area: d;
     background: burlywood;
   }
-  .item {
+  .item a {
       color: white;
   }
-  .item.active {
+  .item.active a{
       color: gold;
   }

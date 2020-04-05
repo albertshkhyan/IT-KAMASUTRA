@@ -11,5 +11,8 @@
     "d m";
 }
 
-
+.app-wrapper-content {
+  grid-area: m;
+  background: cornflowerblue;
+}
 
