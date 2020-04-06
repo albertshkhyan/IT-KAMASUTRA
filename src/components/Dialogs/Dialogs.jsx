@@ -2,41 +2,98 @@ import React from 'react';
 
 import classes from './style.module.css';
 
-const Dialogs = (props ) => {
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
+
+
+const dialogs = [
+    {
+        name: "Valer",
+        id: "1"
+    },
+    {
+        name: "Janna",
+        id: "2"
+    },
+    {
+        name: "Lyov",
+        id: "3"
+    },
+    {
+        name: "Nara",
+        id: "4"
+    },
+    {
+        name: "Ruzan",
+        id: "5"
+    },
+    {
+        name: "Miqo",
+        id: "6"
+    },
+    {
+        name: "Alik",
+        id: "7"
+    },
+    {
+        name: "Consuela",
+        id: "8"
+    },
+
+];
+
+const messages = [
+    {
+        id: "1",
+        message: "Hi",
+    },
+    {
+        id: "2",
+        message: "How are you",
+    },
+    {
+        id: "3",
+        message: "Yo",
+    },
+    {
+        id: "4",
+        message: "Yo",
+    },
+    {
+        id: "5",
+        message: "Yo",
+    },
+    {
+        id: "6",
+        message: "Yo",
+    },
+    {
+        id: "7",
+        message: "Yo",
+    },
+    {
+        id: "8",
+        message: "Yo",
+    },
+];
+
+
+const Dialogs = (props) => {
+
+    const messagesElements = messages.map(({ id, message }) => (<Message message={message} id={id} />));
+
+    const dialogElements = dialogs.map(({ name, id }) => (<DialogItem name={name} id={id} />));
+
     return (
         <div className={classes.dialogs}>
-            
-            <div className={classes.dialogsItems }>
-                <div className={classes.dialog}>
-                    Valer
-                </div>
-                <div className={classes.dialog}>
-                    Janna
-                </div>
-                <div className={classes.dialog}>
-                    Lyov
-                </div>
-                <div className={classes.dialog}>
-                    Nara
-                </div>
-                <div className={classes.dialog}>
-                    Ruzan
-                </div>
-                <div className={classes.dialog}>
-                    Miqo
-                </div>
-                <div className={classes.dialog + ' ' + classes.active}>
-                    Alik
-                </div>
-                <div className={classes.dialog}>
-                    Consuela
-                </div>
+
+            <div className={classes.dialogsItems}>
+                {dialogElements}
             </div>
 
             <div className={classes.messages}>
-                <div className={classes.message}>Hi</div>
-                <div className={classes.message}>How are you</div>
-                <div className={classes.message}>Yo</div>
+                {messagesElements}
+
             </div>
         </div>
     );

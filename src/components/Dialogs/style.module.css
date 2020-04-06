@@ -9,4 +9,11 @@
     color: gold;
 }
 
-  
+.dialog  a{
+    color: white;
+    text-decoration: none;
+}
+
+.message {
+    color: white;
+}
