@@ -9,7 +9,8 @@ import Profile from './components/Profile/Profile';
 // import { Route } from 'react-router';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-function App() {
+function App(props) {
+  debugger;
   return (
     <BrowserRouter>
       <div className="App">
@@ -18,8 +19,12 @@ function App() {
         <div className="app-wrapper-content">
               {/* <Profile /> */}
               {/* <Dialogs /> */}
-              <Route exact path="/dialogs" component={ Dialogs }  />  
-              <Route path="/profile" component={ Profile }  />
+              <Route exact path="/dialogs" render={ () => (
+                <Dialogs dialogPage = { props.state.dialogPage }/>
+               ) }  />  
+              <Route path="/profile" render={ () => (
+                <Profile addPost = { props.addPost } postPage = { props.state.postPage } />
+               ) }  />
         </div>
       </div>
     </BrowserRouter>

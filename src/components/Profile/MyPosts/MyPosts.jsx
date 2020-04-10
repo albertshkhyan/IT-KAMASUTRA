@@ -4,36 +4,24 @@ import classes from './style.module.css';
 import Post from './Post/Post';
 
 
-const posts = [
-    {
-        id : "1",
-        message : "Hi, how are you?",
-        likesCount : 12
-    },
-    {
-        id : "2",
-        message : "It's my first posts",
-        likesCount : 11
-    },
-    {
-        id : "3",
-        message : "blabla",
-        likesCount : 4
-    },
-    {
-        id : "4",
-        message : "blablabla",
-        likesCount : 55
-    }
-]
-
-const MyPosts = () => {
 
 
-    const postsElement = posts.map( ({id, message, likesCount}) => (
+const MyPosts = (props) => {
+
+    const myRef = React.createRef();
+
+
+    const postsElement = props.posts.map( ({id, message, likesCount}) => (
         <Post message={message} likesCount={likesCount} />
       
     )) ;
+
+    const handleClick = () => {
+        // myRef.current.value
+        props.addPost(myRef.current.value);
+        myRef.current.value = "";
+        
+    }
 
     return (
         <div className={classes.postsBlock}>
@@ -42,11 +30,11 @@ const MyPosts = () => {
                 <div> 
                     
                     <div>
-                        <textarea defaultValue="Your News">
+                        <textarea ref = { myRef } placeholder="Your News">
                         </textarea>
                     </div>
                     <div>
-                        <button>Add Post</button>
+                        <button onClick={ handleClick }>Add Post</button>
                     </div>
                  </div>
 
