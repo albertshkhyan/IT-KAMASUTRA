@@ -12,6 +12,6 @@ function rerenderEntireTree(state) {
       </React.StrictMode>,
       document.getElementById('root')
     ); 
-  }
-
+  }  
+    
   export default rerenderEntireTree;
