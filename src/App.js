@@ -10,7 +10,6 @@ import Profile from './components/Profile/Profile';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 function App(props) {
-  debugger;
   return (
     <BrowserRouter>
       <div className="App">
@@ -23,7 +22,11 @@ function App(props) {
                 <Dialogs dialogPage = { props.state.dialogPage }/>
                ) }  />  
               <Route path="/profile" render={ () => (
-                <Profile addPost = { props.addPost } postPage = { props.state.postPage } />
+                <Profile 
+                addPost = { props.addPost } 
+                profilePage = { props.state.profilePage } 
+                updateNewPostText = { props.updateNewPostText }
+                />
                ) }  />
         </div>
       </div>

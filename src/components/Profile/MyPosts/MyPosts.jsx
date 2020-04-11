@@ -18,9 +18,16 @@ const MyPosts = (props) => {
 
     const handleClick = () => {
         // myRef.current.value
-        props.addPost(myRef.current.value);
-        myRef.current.value = "";
+        props.addPost();
+        // myRef.current.value = "";//why not cleared - you cant't change me, only BLL 
+        // props.updateNewPostText("");//if user add too much text, we must warn about it, but we cannot, because we delete it. -< to contradict(հակասել) SRP, we cleared in BLL(addPost)
+
         
+    }
+    const handleOnChange = () => {
+        // console.log(myRef.current.value);
+        
+        props.updateNewPostText(myRef.current.value)
     }
 
     return (
@@ -30,7 +37,7 @@ const MyPosts = (props) => {
                 <div> 
                     
                     <div>
-                        <textarea ref = { myRef } placeholder="Your News">
+                        <textarea onChange={ handleOnChange } ref = { myRef } placeholder="Your News" value={ props.newPostText }>
                         </textarea>
                     </div>
                     <div>

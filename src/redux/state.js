@@ -75,7 +75,7 @@ const state = {
         ]
 
     },
-    postPage : {
+    profilePage : {
         posts :  [
             {
                 id : "1",
@@ -97,20 +97,28 @@ const state = {
                 message : "blablabla",
                 likesCount : 55
             }
-        ]
+        ],
+        newPostText : 'This is my post, :D !!!'
     }
 
 }
 
 
-export const addPosts = (postMessage) => {
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+// export const addPosts = (postMessage) => {////👍
+export const addPosts = () => {////👍👍
     // console.log('addPosts postMessage', postMessage);
     const newPost = {
             id : "5",
-            message : postMessage,
+            // message : postMessage,
+            message : state.profilePage.newPostText,
             likesCount : 0
     }
-    state.postPage.posts.push(newPost);
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = "";
     rerenderEntireTree(state);//give new state added object
 }
 

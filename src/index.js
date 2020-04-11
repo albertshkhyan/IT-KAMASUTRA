@@ -4,7 +4,7 @@ import * as serviceWorker from './serviceWorker';
 import rerenderEntireTree from './render';
 import  state  from './redux/state';
 
-
+window.state = state;
 
 rerenderEntireTree(state);
 
@@ -12,3 +12,4 @@ rerenderEntireTree(state);
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+ 
