@@ -1,5 +1,7 @@
 
-import rerenderEntireTree from '../render';
+let rerenderEntireTree = () =>{
+    console.log("State chnaged");
+}
 
 
 const state = {
@@ -122,4 +124,8 @@ export const addPosts = () => {////👍👍
     rerenderEntireTree(state);//give new state added object
 }
 
+////callback, subscribe,  observer pattern
+export const subscriber = (observer) => {
+    rerenderEntireTree = observer;
+}
 export default state;
