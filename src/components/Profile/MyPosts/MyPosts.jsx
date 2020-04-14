@@ -7,7 +7,7 @@ import Post from './Post/Post';
 
 
 const MyPosts = (props) => {
-
+debugger;
     const myRef = React.createRef();
 
 
@@ -17,14 +17,14 @@ const MyPosts = (props) => {
     )) ;
 
     const handleClick = () => {
-        props.addPost();
-        // myRef.current.value = "";//why not cleared - you cant't change me, only BLL 
-        // props.updateNewPostText("");//if user add too much text, we must warn about it, but we cannot, because we delete it. -< to contradict(հակասել) SRP, we cleared in BLL(addPost)
-
+        // props.addPost();
+        props.dispatch( { type : "ADD_POST" } );
+        
         
     }
     const handleOnChange = () => {
-        props.updateNewPostText(myRef.current.value)
+        // props.updateNewPostText(myRef.current.value)
+        props.dispatch({ type : "UPDATE_NEW_POST_TEXT",  newText : myRef.current.value})
     }
 
     return (

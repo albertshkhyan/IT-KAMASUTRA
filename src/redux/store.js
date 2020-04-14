@@ -102,26 +102,48 @@ const store = {
         }
     
     },
+
     getState() {
         return this._state;
     },
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-   addPost () {
-       debugger;
-        const newPost = {
-                id : "5",
-                message : this._state.profilePage.newPostText,
-                likesCount : 0
+    subscribe (observer) {
+         this._callSubscriber = observer;
+     },
+     
+
+         //    addPost () {
+    //         const newPost = {
+    //                 id : "5",
+    //                 message : this._state.profilePage.newPostText,
+    //                 likesCount : 0
+    //         }
+    //         this._state.profilePage.posts.push(newPost);
+    //         this._state.profilePage.newPostText = "";
+    //         this._callSubscriber(this._state);//give new state added object
+    //     },
+
+    // updateNewPostText (newText) {
+    //     this._state.profilePage.newPostText = newText;
+    //     this._callSubscriber(this._state);
+    // },
+
+
+
+    dispatch(action) { // {type : "UPDATE_NEW_POST_TEXT", newText : "How are you?"}
+        if(action.type === "ADD_POST") {
+                 const newPost = {
+                         id : "5",
+                         message : this._state.profilePage.newPostText,
+                         likesCount : 0
+                 }
+                 this._state.profilePage.posts.push(newPost);
+                 this._state.profilePage.newPostText = "";
+                 this._callSubscriber(this._state);//give new state added object
         }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);//give new state added object
-    },
-   subscribe (observer) {
-        this._callSubscriber = observer;
+        else if(action.type === "UPDATE_NEW_POST_TEXT"){
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 
 }

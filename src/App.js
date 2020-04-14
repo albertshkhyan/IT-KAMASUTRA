@@ -6,7 +6,6 @@ import Dialogs from './components/Dialogs/Dialogs';
 
 import './App.css';
 import Profile from './components/Profile/Profile';
-// import { Route } from 'react-router';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 function App(props) {
@@ -23,9 +22,10 @@ function App(props) {
                ) }  />  
               <Route path="/profile" render={ () => (
                 <Profile 
-                addPost = { props.addPost } 
+                // addPost = { props.addPost } 
+                // updateNewPostText = { props.updateNewPostText }
+                dispatch = {props.dispatch}
                 profilePage = { props.state.profilePage } 
-                updateNewPostText = { props.updateNewPostText }
                 />
                ) }  />
         </div>
