@@ -3,11 +3,14 @@ import React from 'react';
 import classes from './style.module.css';
 import Post from './Post/Post';
 
+import {
+     addPostActionCreator,
+    updateNePostActionCreator 
+} from "../../../redux/store";
 
 
 
 const MyPosts = (props) => {
-debugger;
     const myRef = React.createRef();
 
 
@@ -18,13 +21,14 @@ debugger;
 
     const handleClick = () => {
         // props.addPost();
-        props.dispatch( { type : "ADD_POST" } );
+        props.dispatch(addPostActionCreator());
         
         
     }
     const handleOnChange = () => {
         // props.updateNewPostText(myRef.current.value)
-        props.dispatch({ type : "UPDATE_NEW_POST_TEXT",  newText : myRef.current.value})
+        props.dispatch(updateNePostActionCreator(myRef.current.value));
+
     }
 
     return (
