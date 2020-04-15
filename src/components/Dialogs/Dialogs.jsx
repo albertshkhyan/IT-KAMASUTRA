@@ -4,6 +4,9 @@ import classes from './style.module.css';
 
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { newMessageBodyCreator, addNewMessageBody } from './../../redux/store';
+
+
 
 
 const Dialogs = (props) => {
@@ -11,6 +14,13 @@ const Dialogs = (props) => {
 
     const dialogElements = props.dialogPage.dialogs.map(({ name, id }) => (<DialogItem name={name} id={id} />));
 
+
+    const handleOnChange = e => {
+        props.dispatch(newMessageBodyCreator(e.target.value));
+    }
+    const handleOnClick = () => {
+        props.dispatch(addNewMessageBody());
+    }
     return (
         <div className={classes.dialogs}>
 
@@ -21,6 +31,18 @@ const Dialogs = (props) => {
             <div className={classes.messages}>
                 {messagesElements}
 
+                <div>
+                    <div>
+                        <textarea  
+                        onChange={handleOnChange} 
+                        value={props.dialogPage.new_message_body} 
+                        placeholder="Enter your message"
+                        ></textarea>
+                    </div>
+                    <div>
+                        <button onClick={handleOnClick}>ADD MESSAGE</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

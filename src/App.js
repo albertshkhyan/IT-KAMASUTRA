@@ -18,7 +18,10 @@ function App(props) {
               {/* <Profile /> */}
               {/* <Dialogs /> */}
               <Route exact path="/dialogs" render={ () => (
-                <Dialogs dialogPage = { props.state.dialogPage }/>
+                <Dialogs 
+                dialogPage = { props.state.dialogPage }
+                dispatch = {props.dispatch}
+                />
                ) }  />  
               <Route path="/profile" render={ () => (
                 <Profile 

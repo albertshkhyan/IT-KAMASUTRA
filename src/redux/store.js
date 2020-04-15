@@ -1,5 +1,7 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_POST = "ADD_POST";
+const NEW_MESSAGE_BODY = "NEW_MESSAGE_BODY";
+const ADD_NEW_MESSAGE_BODY = "ADD_NEW_MESSAGE_BODY";
 
 
 const store = {
@@ -76,7 +78,8 @@ const store = {
                     id: "8"
                 },
             
-            ]
+            ],
+            new_message_body : ""
     
         },
         profilePage : {
@@ -115,7 +118,7 @@ const store = {
      },
      
     dispatch(action) {
-        if(action.type === "ADD_POST") {
+        if(action.type === ADD_POST) {
                  const newPost = {
                          id : "5",
                          message : this._state.profilePage.newPostText,
@@ -123,16 +126,32 @@ const store = {
                  }
                  this._state.profilePage.posts.push(newPost);
                  this._state.profilePage.newPostText = "";
-                 this._callSubscriber(this._state);//give new state added object
+                 this._callSubscriber(this._state);
         }
-        else if(action.type === "UPDATE_NEW_POST_TEXT"){
+        else if(action.type === UPDATE_NEW_POST_TEXT){
             this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+        else if(action.type === NEW_MESSAGE_BODY) {
+            this._state.dialogPage.new_message_body = action.body;
+            this._callSubscriber(this._state);
+        }
+        else if(action.type === ADD_NEW_MESSAGE_BODY) {
+            const {new_message_body, messages} = this._state.dialogPage
+            this._state.dialogPage.messages.push({
+                id :  messages.length + 1 + '',
+                message : new_message_body
+            });
             this._callSubscriber(this._state);
         }
     }
 
 }
 
+export const newMessageBodyCreator = (newBody) => ({type : NEW_MESSAGE_BODY, body : newBody});
+export const addNewMessageBody = () => {
+    return ({type : ADD_NEW_MESSAGE_BODY})
+};
 
 export const addPostActionCreator = () => ({type : ADD_POST});
 
