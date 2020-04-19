@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
-import  store  from './redux/store';
+// import  store  from './redux/Mystore';
+import store  from './redux/redux_store';
 
 import './index.css';
 
@@ -20,7 +21,9 @@ function rerenderEntireTree(state) {
     ); 
   }  
 
-  store.subscribe(rerenderEntireTree);
+  store.subscribe(() => {
+    rerenderEntireTree(store.getState());
+  });
   rerenderEntireTree(store.getState());
 
 // If you want your app to work offline and load faster, you can change

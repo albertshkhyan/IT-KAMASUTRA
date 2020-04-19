@@ -1,5 +1,6 @@
 import dialogPageReducer from './dialog_page_reducer';
 import profilePageReducer from './profile_page_reducer';
+import sideBarReducer from './sideBarReducer';
 
 
 // const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -110,7 +111,8 @@ const store = {
                 }
             ],
             newPostText: 'This is my post, :D !!!'
-        }
+        },
+        sideBarPage : {}
 
     },
 
@@ -124,6 +126,7 @@ const store = {
     dispatch(action) {
         this._state.dialogPage = dialogPageReducer(this._state.dialogPage, action);
         this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.sideBarPage = sideBarReducer(this._state.sideBarPage, action)
 
         this._callSubscriber(this._state);
     }
