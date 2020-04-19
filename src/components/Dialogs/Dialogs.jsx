@@ -4,12 +4,13 @@ import classes from './style.module.css';
 
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { newMessageBodyCreator, addNewMessageBody } from './../../redux/store';
+import { newMessageBodyCreator, addNewMessageBody } from './../../redux/dialog_page_reducer';
 
 
 
 
 const Dialogs = (props) => {
+    debugger;
     const messagesElements = props.dialogPage.messages.map(({ id, message }) => (<Message message={message} id={id} />));
 
     const dialogElements = props.dialogPage.dialogs.map(({ name, id }) => (<DialogItem name={name} id={id} />));

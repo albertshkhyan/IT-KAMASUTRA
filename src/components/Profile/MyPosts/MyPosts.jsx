@@ -4,9 +4,10 @@ import classes from './style.module.css';
 import Post from './Post/Post';
 
 import {
-     addPostActionCreator,
+    addPostActionCreator,
     updateNePostActionCreator 
-} from "../../../redux/store";
+} from "../../../redux/profile_page_reducer";
+console.log('updateNePostActionCreator', updateNePostActionCreator);
 
 
 
