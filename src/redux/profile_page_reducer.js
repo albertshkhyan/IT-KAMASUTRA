@@ -1,7 +1,33 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_POST = "ADD_POST";
 
-function profilePageReducer(state, action) {
+const initialState = {
+    posts: [
+        {
+            id: "1",
+            message: "Hi, how are you?",
+            likesCount: 12
+        },
+        {
+            id: "2",
+            message: "It's my first posts",
+            likesCount: 11
+        },
+        {
+            id: "3",
+            message: "blabla",
+            likesCount: 4
+        },
+        {
+            id: "4",
+            message: "blablabla",
+            likesCount: 55
+        }
+    ],
+    newPostText: 'This is my post, :D !!!'
+}
+
+function profilePageReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_POST : 
             const newPost = {

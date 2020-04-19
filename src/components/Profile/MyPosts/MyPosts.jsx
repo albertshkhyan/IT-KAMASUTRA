@@ -22,9 +22,7 @@ const MyPosts = (props) => {
 
     const handleClick = () => {
         // props.addPost();
-        props.dispatch(addPostActionCreator());
-        
-        
+        myRef.current.value && props.dispatch(addPostActionCreator());
     }
     const handleOnChange = () => {
         // props.updateNewPostText(myRef.current.value)
