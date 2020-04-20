@@ -1,13 +1,10 @@
 import React from "react";
 
-import classes from "./style.module.css";
 
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {
-  newMessageBodyCreator,
-  addNewMessageBody,
-} from "./../../redux/dialog_page_reducer";
+
+import classes from "./style.module.css";
 
 const Dialogs = (props) => {
   const messagesElements = props.dialogPage.messages.map(({ id, message }) => (
@@ -18,19 +15,26 @@ const Dialogs = (props) => {
     <DialogItem name={name} id={id} />
   ));
 
+  // const handleOnChange = (e) => {
+  //   props.dispatch(newMessageBodyCreator(e.target.value));
+  // };
   const handleOnChange = (e) => {
-    props.dispatch(newMessageBodyCreator(e.target.value));
+    props.newMessageBody(e);
   };
+
+  // const handleOnClick = () => {
+  //   props.dispatch(addNewMessageBody());
+  // };
   const handleOnClick = () => {
-    props.dispatch(addNewMessageBody());
+    props.addNewMessage();
   };
+
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>{dialogElements}</div>
 
       <div className={classes.messages}>
         {messagesElements}
-
         <div>
           <div>
             <textarea
