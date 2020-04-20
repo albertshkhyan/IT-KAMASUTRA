@@ -1,55 +1,44 @@
-import React from 'react';
+import React from "react";
 
-import classes from './style.module.css';
-import Post from './Post/Post';
-
-import {
-    addPostActionCreator,
-    updateNePostActionCreator 
-} from "../../../redux/profile_page_reducer";
-console.log('updateNePostActionCreator', updateNePostActionCreator);
-
-
+import classes from "./style.module.css";
+import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    const myRef = React.createRef();
+  const myRef = React.createRef();
 
+  const postsElement = props.posts.map(({ id, message, likesCount }) => (
+    <Post message={message} likesCount={likesCount} />
+  ));
 
-    const postsElement = props.posts.map( ({id, message, likesCount}) => (
-        <Post message={message} likesCount={likesCount} />
-      
-    )) ;
+  const handleClick = (e) => {
+    myRef.current.value && props.addPost();
+  };
 
-    const handleClick = () => {
-        // props.addPost();
-        myRef.current.value && props.dispatch(addPostActionCreator());
-    }
-    const handleOnChange = () => {
-        // props.updateNewPostText(myRef.current.value)
-        props.dispatch(updateNePostActionCreator(myRef.current.value));
+  const handleOnChange = (e) => {
+    props.updateNewPostText(e.target.value);
+  };
 
-    }
-
-    return (
-        <div className={classes.postsBlock}>
-            <div className={classes.posts}>
-               <h2>My Posts</h2>
-                <div> 
-                    
-                    <div>
-                        <textarea onChange={ handleOnChange } ref = { myRef } placeholder="Your News" value={ props.newPostText }>
-                        </textarea>
-                    </div>
-                    <div>
-                        <button onClick={ handleClick }>Add Post</button>
-                    </div>
-                 </div>
-
-                    <div className={classes.posts}>
-                       { postsElement }
-                    </div>
-            </div>
+  return (
+    <div className={classes.postsBlock}>
+      <div className={classes.posts}>
+        <h2>My Posts</h2>
+        <div>
+          <div>
+            <textarea
+              ref={myRef}
+              onChange={handleOnChange}
+              placeholder="Your News"
+              value={props.newPostText}
+            ></textarea>
+          </div>
+          <div>
+            <button onClick={handleClick}>Add Post</button>
+          </div>
         </div>
-    );
-}
+
+        <div className={classes.posts}>{postsElement}</div>
+      </div>
+    </div>
+  );
+};
 export default MyPosts;
