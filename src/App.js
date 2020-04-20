@@ -15,21 +15,17 @@ function App(props) {
         <Header />
         <Dashboard />
         <div className="app-wrapper-content">
-              {/* <Profile /> */}
-              {/* <Dialogs /> */}
-              <Route exact path="/dialogs" render={ () => (
-                <Dialogs 
-                dialogPage = { props.store.getState().dialogPage }
-                dispatch = { props.store.dispatch }
-                />
-               ) }  />  
-              <Route path="/profile" render={ () => (
-                <Profile 
-                // addPost = { props.addPost } 
-                // updateNewPostText = { props.updateNewPostText }
-                store = { props.store }
-                /> 
-               ) }  />
+          <Route exact path="/dialogs" render={() => (
+            <Dialogs
+              dialogPage={props.store.getState().dialogPage}
+              dispatch={props.store.dispatch}
+            />
+          )} />
+          <Route path="/profile" render={() => (
+            <Profile
+              store={props.store}
+            />
+          )} />
         </div>
       </div>
     </BrowserRouter>

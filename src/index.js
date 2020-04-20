@@ -4,7 +4,7 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 // import  store  from './redux/Mystore';
-import store  from './redux/redux_store';
+import store from './redux/redux_store';
 
 import './index.css';
 
@@ -13,20 +13,19 @@ console.log('store', store);
 
 
 function rerenderEntireTree(state) {
-    ReactDOM.render(
-        <App  store = { store }
-          />,
-      document.getElementById('root')
-    ); 
-  }  
+  ReactDOM.render(
+    <App store={store}
+    />,
+    document.getElementById('root')
+  );
+}
 
-  store.subscribe(() => {
-    rerenderEntireTree(store.getState());
-  });
+store.subscribe(() => {
   rerenderEntireTree(store.getState());
+});
+rerenderEntireTree(store.getState());
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
- 
