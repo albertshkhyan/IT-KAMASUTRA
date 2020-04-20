@@ -7,6 +7,7 @@ import App from './App';
 import store from './redux/redux_store';
 
 import './index.css';
+import CreateMyContext from './createMyContext';
 
 window.state = store.getState();
 console.log('store', store);
@@ -14,8 +15,9 @@ console.log('store', store);
 
 function rerenderEntireTree(state) {
   ReactDOM.render(
-    <App store={store}
-    />,
+    <CreateMyContext.Provider value={ store }>
+      <App store={store} />
+    </CreateMyContext.Provider>,
     document.getElementById('root')
   );
 }

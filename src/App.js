@@ -15,15 +15,8 @@ function App(props) {
         <Header />
         <Dashboard />
         <div className="app-wrapper-content">
-          <Route exact path="/dialogs" render={() => (
-            <DialogsContainer store = {props.store}
-            />
-          )} />
-          <Route path="/profile" render={() => (
-            <Profile
-              store={props.store}
-            />
-          )} />
+          <Route exact path="/dialogs" render={() => ( <DialogsContainer  />  )} />
+          <Route path="/profile" render={() => (  <Profile /> )} />
         </div>
       </div>
     </BrowserRouter>
