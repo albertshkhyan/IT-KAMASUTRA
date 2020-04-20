@@ -14,8 +14,7 @@ console.log('store', store);
 
 function rerenderEntireTree(state) {
     ReactDOM.render(
-        <App  state = { state }
-              dispatch = {store.dispatch.bind(store)}
+        <App  store = { store }
           />,
       document.getElementById('root')
     ); 

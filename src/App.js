@@ -19,17 +19,16 @@ function App(props) {
               {/* <Dialogs /> */}
               <Route exact path="/dialogs" render={ () => (
                 <Dialogs 
-                dialogPage = { props.state.dialogPage }
-                dispatch = {props.dispatch}
+                dialogPage = { props.store.getState().dialogPage }
+                dispatch = { props.store.dispatch }
                 />
                ) }  />  
               <Route path="/profile" render={ () => (
                 <Profile 
                 // addPost = { props.addPost } 
                 // updateNewPostText = { props.updateNewPostText }
-                dispatch = {props.dispatch}
-                profilePage = { props.state.profilePage } 
-                />
+                store = { props.store }
+                /> 
                ) }  />
         </div>
       </div>

@@ -12,24 +12,22 @@ console.log('updateNePostActionCreator', updateNePostActionCreator);
 
 
 const MyPosts = (props) => {
-    const myRef = React.createRef();
 
+    const myRef = React.createRef();
 
     const postsElement = props.posts.map( ({id, message, likesCount}) => (
         <Post message={message} likesCount={likesCount} />
       
     )) ;
 
-    const handleClick = () => {
-        // props.addPost();
-        myRef.current.value && props.dispatch(addPostActionCreator());
+    const handleClick = e => {
+        myRef.current.value && props.addPost()
+    };
+    
+    const handleOnChange = e =>{
+        props.updateNewPostText(e.target.value)
     }
-    const handleOnChange = () => {
-        // props.updateNewPostText(myRef.current.value)
-        props.dispatch(updateNePostActionCreator(myRef.current.value));
-
-    }
-
+    
     return (
         <div className={classes.postsBlock}>
             <div className={classes.posts}>
@@ -37,7 +35,7 @@ const MyPosts = (props) => {
                 <div> 
                     
                     <div>
-                        <textarea onChange={ handleOnChange } ref = { myRef } placeholder="Your News" value={ props.newPostText }>
+                        <textarea ref = { myRef } onChange={ handleOnChange }  placeholder="Your News" value={ props.newPostText }>
                         </textarea>
                     </div>
                     <div>

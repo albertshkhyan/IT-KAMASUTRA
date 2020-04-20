@@ -14,7 +14,6 @@ const Dialogs = (props) => {
 
     const dialogElements = props.dialogPage.dialogs.map(({ name, id }) => (<DialogItem name={name} id={id} />));
 
-
     const handleOnChange = e => {
         props.dispatch(newMessageBodyCreator(e.target.value));
     }
