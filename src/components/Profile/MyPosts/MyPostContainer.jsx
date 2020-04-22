@@ -6,8 +6,7 @@ import {connect} from 'react-redux';
 
 
 const mapStateToProps = (state) => {
-  console.log('mpaStateToProps Work Every time when change props');
-  debugger
+  // console.log('mpaStateToProps Work Every time when change props ✅');
   return ({
     posts : state.profilePage.posts,
     newPostText : state.profilePage.newPostText

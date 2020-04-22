@@ -9,9 +9,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 function App(props) {
+  console.log("render App after change MyPosts 👍👍😎😎");
   return (
     <BrowserRouter>
       <div className="App">
+        
         <Header />
         <Dashboard />
         <div className="app-wrapper-content">
