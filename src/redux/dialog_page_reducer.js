@@ -76,17 +76,17 @@ const initialState = {
 }
 
 function dialogPageReducer(state = initialState, action) {
-    const {new_message_body, messages} = state
-
+    // const {new_message_body, messages} = state
     switch(action.type) {
         case NEW_MESSAGE_BODY : 
             state.new_message_body = action.body;
             return state;
         case ADD_NEW_MESSAGE_BODY:    
-            state.messages.push({
-                id :  messages.length + 1 + '',
-                message : new_message_body
-            }); 
+        const newMessage = {
+            id :  state.messages.length + 1 + '',
+            message : state.new_message_body
+        }
+            state.messages.push(newMessage); 
             state.new_message_body = "";
             return state;
         default: return state;

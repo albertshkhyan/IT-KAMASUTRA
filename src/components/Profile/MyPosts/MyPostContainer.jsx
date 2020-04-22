@@ -1,31 +1,27 @@
-import React from "react";
-
 import MyPosts from "./MyPosts";
 import { updateNePostActionCreator } from "../../../redux/profile_page_reducer";
 import { addPostActionCreator } from "./../../../redux/profile_page_reducer";
-import CreateMyContext from "./../../../createMyContext";
 
-const MyPostContainer = (props) => {
-  return (
-    <CreateMyContext.Consumer>
-      {(store) => {
-        const state = store.getState().profilePage;
-        const handleUpdateNewPostText = (newText) => {
-          store.dispatch(updateNePostActionCreator(newText));
-        };
-        const handleAddPost = () => {
-          store.dispatch(addPostActionCreator());
-        };
-        return (
-          <MyPosts
-            newPostText={state.newPostText}
-            posts={state.posts}
-            addPost={handleAddPost}
-            updateNewPostText={handleUpdateNewPostText}
-          />
-        );
-      }}
-    </CreateMyContext.Consumer>
-  );
+import {connect} from 'react-redux';
+
+
+const mapStateToProps = (state) => {
+  console.log('mpaStateToProps Work Every time when change props');
+  debugger
+  return ({
+    posts : state.profilePage.posts,
+    newPostText : state.profilePage.newPostText
+  })
 };
+const mapDispatchToProps = (dispatch) => {  
+  return ({
+    addPost : () => dispatch(addPostActionCreator()),
+    updateNewPostText : (newText) =>{
+      return  dispatch(updateNePostActionCreator(newText));
+    }
+  })
+}
+
+
+const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 export default MyPostContainer;

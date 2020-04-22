@@ -4,6 +4,7 @@ import classes from "./style.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+  console.log('props MyPosts 👽👽', props);
   const myRef = React.createRef();
 
   const postsElement = props.posts.map(({ id, message, likesCount }) => (
@@ -15,6 +16,7 @@ const MyPosts = (props) => {
   };
 
   const handleOnChange = (e) => {
+    debugger;
     props.updateNewPostText(e.target.value);
   };
 
