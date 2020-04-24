@@ -4,6 +4,7 @@ import classes from "./style.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+  // console.log('MyPosts  rendered after chenge ✅');
   const myRef = React.createRef();
 
   const postsElement = props.posts.map(({ id, message, likesCount }) => (

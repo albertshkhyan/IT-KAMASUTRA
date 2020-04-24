@@ -1,34 +1,29 @@
-import React from "react";
 import Dialogs from "./Dialogs";
 import {
   newMessageBodyCreator,
   addNewMessageBody,
 } from "./../../redux/dialog_page_reducer";
-import CreateMyContext from "./../../createMyContext";
 
-const DialogsContainer = (props) => {
-  return (
-    <CreateMyContext.Consumer>
-      {(store) => {
-        const dialogPage = store.getState().dialogPage;
+import { connect } from 'react-redux';
 
-        const handleNewMesageBody = (e) => {
-          store.dispatch(newMessageBodyCreator(e.target.value));
-        };
+const mapStateToProps = (state) => {
+  return ({
+    dialogPage : state.dialogPage
+  })  
+}
 
-        const handleAddNewMessage = () => {
-          store.dispatch(addNewMessageBody());
-        };
+const mapDispatchToProps = (dsipatch) => {
+  return ({
+    newMessageBody : (e) => {
+      // console.log('mapDispatchToProps e +++++ ', e.target.value);
+      return dsipatch( newMessageBodyCreator(e.target.value) )  
+    },
+    addNewMessage : () => {
+      return dsipatch( addNewMessageBody() )
+    }
+  })
+}
 
-        return (
-          <Dialogs
-            dialogPage={dialogPage}
-            newMessageBody={handleNewMesageBody}
-            addNewMessage={handleAddNewMessage}
-          />
-        );
-      }}
-    </CreateMyContext.Consumer>
-  );
-};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
