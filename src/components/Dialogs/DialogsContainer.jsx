@@ -2,7 +2,7 @@ import Dialogs from "./Dialogs";
 import {
   newMessageBodyCreator,
   addNewMessageBody,
-} from "./../../redux/dialog_page_reducer";
+} from "../../redux/dialogPageReducer";
 
 import { connect } from 'react-redux';
 

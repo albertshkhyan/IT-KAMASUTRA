@@ -34,6 +34,11 @@ const Dashboard = () => {
                                 Settings
                             </NavLink>
                         </li>
+                        <li className={classes.item}>
+                            <NavLink activeClassName={classes.activeLink}  to="/users">
+                                Users
+                            </NavLink>
+                        </li>
 
                     </ul>
                 </nav>

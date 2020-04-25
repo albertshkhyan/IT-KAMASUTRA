@@ -1,6 +1,6 @@
 import MyPosts from "./MyPosts";
-import { updateNePostActionCreator } from "../../../redux/profile_page_reducer";
-import { addPostActionCreator } from "./../../../redux/profile_page_reducer";
+import { updateNePostActionCreator } from "../../../redux/profilePageReducer";
+import { addPostActionCreator } from "../../../redux/profilePageReducer";
 
 import {connect} from 'react-redux';
 
