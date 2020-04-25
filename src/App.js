@@ -7,9 +7,9 @@ import './App.css';
 import Profile from './components/Profile/Profile';
 import { BrowserRouter, Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
-  console.log("render App after change MyPosts 👍👍😎😎");
   return (
     <BrowserRouter>
       <div className="App">
@@ -19,6 +19,7 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route exact path="/dialogs" component={DialogsContainer} />
           <Route path="/profile" component={Profile} />
+          <Route path="/users" component={UsersContainer} />
         </div>
       </div>
     </BrowserRouter>
