@@ -6,21 +6,21 @@ import userPhoto from '../../assets/images/users.png';
 
 import classes from "./style.module.css";
 
-const Users = (props) => {
 
-  //// FIXME -  this is side effect
-  if (props.users.length === 0) {
+class Users extends React.Component {
+  constructor(props) {
+    super(props);
+    //FIXME - constructor work only one time, in updating not called constructor, but 
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then( (response) =>  props.setUsers(response.data.items) )
+    .get("https://social-network.samuraijs.com/api/1.0/users")
+    .then( (response) =>  props.setUsers(response.data.items) );
   }
-  const onShowMore = () => {
-    // props.setUsers(null);
-  };
-  return (
-    <div className="Users">
-      {props.users.map((item) => {
-        console.log("item", item);
+
+
+  render(){
+    return (
+      <div className="Users">
+      {this.props.users.map((item) => {
         return (
           <div key={item.id} className={classes.userContaienr}>
             <div className={classes.avatar}>
@@ -36,9 +36,9 @@ const Users = (props) => {
 
             <div className={classes.btn}>
               {item.followed ? (
-                <button onClick={() => props.follow(item.id)}>FOLLOW</button>
+                <button onClick={() => this.props.follow(item.id)}>FOLLOW</button>
               ) : (
-                <button onClick={() => props.unfollow(item.id)}>
+                <button onClick={() => this.props.unfollow(item.id)}>
                   UNFOLLOW
                 </button>
               )}
@@ -47,9 +47,11 @@ const Users = (props) => {
         );
       })}
       <div className={`${classes.btnShowMoreContaoner}  flexible jCenter`}>
-        <button onClick={onShowMore}>SHOW MORE</button>
+        <button onClick={this.getUsers}>SHOW MORE</button>
       </div>
     </div>
-  );
-};
+    )
+  }
+}
+
 export default Users;
