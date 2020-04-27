@@ -8,14 +8,11 @@ import classes from "./style.module.css";
 
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props);
-    //FIXME - constructor work only one time, in updating not called constructor, but 
+  componentDidMount() {
     axios
     .get("https://social-network.samuraijs.com/api/1.0/users")
-    .then( (response) =>  props.setUsers(response.data.items) );
+    .then( (response) =>  this.props.setUsers(response.data.items) );
   }
-
 
   render(){
     return (
