@@ -4,7 +4,7 @@
 .userContaienr {
     display: grid;
     grid-template-columns: 125px 275px;
-    grid-template-rows: 133px 42px;
+    grid-template-rows: 133px 1fr;
     gap: 5px 5px;
     grid-template-areas: "a m" "b m";
     margin-bottom: 5px;
