@@ -5,18 +5,67 @@ import * as axios from "axios";
 import userPhoto from "../../assets/images/users.png";
 
 import classes from "./style.module.css";
+import { setTotalCountAC, setCurrentPageAC } from "../../redux/userPageReducer";
+
+// const Pagination = (props) => {};
 
 class Users extends React.Component {
   componentDidMount() {
-    if (this.props.users.length === 0) {
-      axios
-        .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => this.props.setUsers(response.data.items));
-    }
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalCount(setTotalCountAC(response.data.totalCount));
+      });
   }
+
+  onActiveClick = (curentPage) => {
+    this.props.setCurrentPage(setCurrentPageAC(curentPage));
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${curentPage}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalCount(setTotalCountAC(response.data.totalCount));
+      });
+  };
+
+  onRightHandle = () => {};
   render() {
+    let limit = this.props.pageSize;
+    let totalPages = Math.round(this.props.totalCount / limit);
+    let visiblePage = Math.round(this.props.totalCount / totalPages);
+    console.log("visiblePage", visiblePage);
+    let pageLimitArray = [];
+    for (let i = 1; i <= visiblePage; ++i) {
+      pageLimitArray.push(i);
+    }
+
     return (
       <div className="Users">
+        <div className={classes.paginationContainer}>
+          <div className={classes.paginContent}>
+            <button> &lt;&lt; </button>
+            {pageLimitArray.map((item) => {
+              return (
+                <span
+                  key={item}
+                  className={
+                    this.props.currentPage === item ? classes.active : ""
+                  }
+                  onClick={() => this.onActiveClick(item)}
+                >
+                  &nbsp;&nbsp;
+                  {item}
+                </span>
+              );
+            })}
+            <button onClick={this.onRightHandle}> &gt;&gt; </button>
+          </div>
+        </div>
         {this.props.users.map((item) => {
           return (
             <div key={item.id} className={classes.userContaienr}>
