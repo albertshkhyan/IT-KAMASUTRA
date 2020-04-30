@@ -1,6 +1,6 @@
 import React from "react";
 
-import userPhoto from "../../assets/images/users.png";
+import userPhoto from "../../../assets/images/users.png";
 
 import classes from "./style.module.css";
 

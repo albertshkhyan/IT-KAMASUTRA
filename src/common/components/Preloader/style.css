@@ -1,0 +1,10 @@
+.Preloader {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+}
+
+.preloadContent {
+    width: max-content;
+}
