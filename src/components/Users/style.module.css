@@ -6,7 +6,10 @@
     grid-template-areas: "a m" "b m";
     margin-bottom: 5px;
 }
-
+.paginationContainer {
+    width: 400px;
+    overflow: auto;
+}
 .active {
     font-weight: bold;
     font-size: 1.2em;
