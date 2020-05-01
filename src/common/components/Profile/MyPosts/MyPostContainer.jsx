@@ -1,8 +1,7 @@
 import MyPosts from "./MyPosts";
-import { updateNePostActionCreator } from "../../../redux/profilePageReducer";
-import { addPostActionCreator } from "../../../redux/profilePageReducer";
 
 import {connect} from 'react-redux';
+import { addPostActionCreator, updateNePostActionCreator } from './../../../../redux/profilePageReducer';
 
 
 const mapStateToProps = (state) => {

@@ -1,13 +1,14 @@
 import React from 'react';
 
-import Header from './components/Header/Header';
-import Dashboard from './components/Dashboard/Dashboard';
+import Header from './common/components/Header/Header';
+
+import DialogsContainer from './common/components/Dialogs/DialogsContainer';
+import UsersContainer from './common/components/Users/UsersContainer';
+import Dashboard from './common/components/Dashboard/Dashboard';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Profile from './common/components/Profile/Profile';
 
 import './App.css';
-import Profile from './components/Profile/Profile';
-import { BrowserRouter, Route } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
   return (

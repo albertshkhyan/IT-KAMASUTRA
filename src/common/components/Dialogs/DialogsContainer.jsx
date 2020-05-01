@@ -1,10 +1,8 @@
 import Dialogs from "./Dialogs";
-import {
-  newMessageBodyCreator,
-  addNewMessageBody,
-} from "../../redux/dialogPageReducer";
+
 
 import { connect } from 'react-redux';
+import { newMessageBodyCreator, addNewMessageBody } from './../../../redux/dialogPageReducer';
 
 const mapStateToProps = (state) => {
   return ({
