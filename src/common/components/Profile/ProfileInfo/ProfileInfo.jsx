@@ -1,15 +1,28 @@
-import React from 'react';
+import React from "react";
 
-import classes from './style.module.css';
+import classes from "./style.module.css";
+import Preloader from "./../../Preloader/Preloader";
 
-const ProfileInfo = props => {
-    return (
+const ProfileInfo = (props) => {
+  return (
+    <>
+      {props.profileData ? (
         <div className={classes.ProfileInfo}>
+          <div>
+            <img src={props.profileData.photos.large} alt="estaentumundo" />
+          </div>
+          <div className={classes.avatarDescription}>
+            {" "}
+            avatar + description
             <div>
-                <img src="https://www.estaentumundo.com/wp-content/imagenes/2017/06/playa-varadero-cuba-e1497900761571.jpg" alt="estaentumundo" />
+              <span>{props.profileData.fullName}</span>
             </div>
-            <div className={classes.avatarDescription}> avatar + description </div>
+          </div>
         </div>
-    );
-}
+      ) : (
+        <Preloader />
+      )}
+    </>
+  );
+};
 export default ProfileInfo;
