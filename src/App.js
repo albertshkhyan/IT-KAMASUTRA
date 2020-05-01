@@ -6,9 +6,9 @@ import DialogsContainer from './common/components/Dialogs/DialogsContainer';
 import UsersContainer from './common/components/Users/UsersContainer';
 import Dashboard from './common/components/Dashboard/Dashboard';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Profile from './common/components/Profile/Profile';
 
 import './App.css';
+import ProfileContainer from './common/components/Profile/ProfileContainer';
 
 function App(props) {
   return (
@@ -19,7 +19,7 @@ function App(props) {
         <Dashboard />
         <div className="app-wrapper-content">
           <Route exact path="/dialogs" component={DialogsContainer} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" component={ProfileContainer} />
           <Route path="/users" component={UsersContainer} />
         </div>
       </div>

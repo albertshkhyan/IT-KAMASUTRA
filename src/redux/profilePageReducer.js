@@ -1,5 +1,6 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_POST = "ADD_POST";
+const PROFILE = "PROFILE";
 
 const initialState = {
     posts: [
@@ -24,7 +25,8 @@ const initialState = {
             likesCount: 55
         }
     ],
-    newPostText: 'This is my post, :D !!!'
+    newPostText: 'This is my post, :D !!!',
+    profileData : null
 }
 
 function profilePageReducer(state = initialState, action) {
@@ -41,12 +43,19 @@ function profilePageReducer(state = initialState, action) {
                 ...state,
                 newPostText : action.newText
             };
+
+        case PROFILE : return {
+            ...state,
+            profileData : action.profileData
+        }
         default: return state;
     
     }
 }
 
 export const addPostActionCreator = () => ({type : ADD_POST});
+
+export const setProfileData = (profileData) => ({type : PROFILE, profileData});
 
 export const updateNePostActionCreator = (newText) => ({
     type : UPDATE_NEW_POST_TEXT,
