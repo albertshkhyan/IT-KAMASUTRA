@@ -19,7 +19,7 @@ function App(props) {
         <Dashboard />
         <div className="app-wrapper-content">
           <Route exact path="/dialogs" component={DialogsContainer} />
-          <Route path="/profile" component={ProfileContainer} />
+          <Route path="/profile/:userID?" component={ProfileContainer} />
           <Route path="/users" component={UsersContainer} />
         </div>
       </div>
