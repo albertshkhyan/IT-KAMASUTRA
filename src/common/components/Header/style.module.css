@@ -6,3 +6,9 @@
   .Header img {
     width: 20px;
   }
+  .loginCContainer a {
+    color: white;
+  }
+  .login {
+    color: white;
+  }
