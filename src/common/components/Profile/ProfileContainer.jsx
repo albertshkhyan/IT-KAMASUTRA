@@ -8,10 +8,14 @@ import { withRouter } from "react-router-dom";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    const { userID } = this.props.match.params;
+    debugger;
+    let { userID } = this.props.match.params;
+    // userID = userID === undefined ? 7837 : userID;//first time loading infinite
+    debugger;
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`)
       .then((response) => {
+        console.log("ProfileContainer response", response);
         this.props.setProfileData(response.data);
       });
   }
@@ -27,7 +31,6 @@ const mapStateToProps = (state) => {
     profileData: state.profilePage.profileData,
   };
 };
-
 
 ////variant 1
 // const GetURLContainer = withRouter(ProfileContainer);

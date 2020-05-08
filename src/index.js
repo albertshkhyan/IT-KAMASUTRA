@@ -8,6 +8,7 @@ import store from './redux/redux_store';
 
 import { Provider } from "react-redux";
 
+window.store = store;
 
 
   ReactDOM.render(
