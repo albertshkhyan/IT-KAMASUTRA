@@ -1,23 +1,18 @@
-import React from "react";
-import Profile from "./Profile";
-import * as axios from "axios";
-import { connect } from "react-redux";
 import { setIsFetching, setUsers } from "../../../redux/userPageReducer";
+
+import APIRequests from "./../../../api/api";
+import Profile from "./Profile";
+import React from "react";
+import { connect } from "react-redux";
 import { setProfileData } from "./../../../redux/profilePageReducer";
 import { withRouter } from "react-router-dom";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    debugger;
     let { userID } = this.props.match.params;
-    // userID = userID === undefined ? 7837 : userID;//first time loading infinite
-    debugger;
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`)
-      .then((response) => {
-        console.log("ProfileContainer response", response);
-        this.props.setProfileData(response.data);
-      });
+    APIRequests.profile(userID).then((data) => {
+      this.props.setProfileData(data);
+    });
   }
 
   render() {
