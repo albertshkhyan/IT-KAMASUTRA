@@ -1,4 +1,4 @@
-import APIRequests from './../../../api/api';
+import APIRequests from "./../../../api/api";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import classes from "./style.module.css";
@@ -60,12 +60,17 @@ const UserItem = (props) => {
               <div className={classes.btnContainer}>
                 {item.followed ? (
                   <button
-                    className={`${classes.btn} ${classes.unfollow}`}
+                    disabled={props.followingInProgress.some(
+                      (id) => id === item.id
+                    )}
+                    className={`${classes.btn} ${classes.unfollow} `}
                     onClick={() => {
+                      props.toggleFollowingInProgress(true, item.id);
                       APIRequests.deleteFollow(item.id).then((data) => {
                         if (data.resultCode === 0) {
                           props.unfollow(item.id);
                         }
+                        props.toggleFollowingInProgress(false, item.id);
                       });
                     }}
                   >
@@ -73,12 +78,17 @@ const UserItem = (props) => {
                   </button>
                 ) : (
                   <button
+                    disabled={props.followingInProgress.some(
+                      (id) => id === item.id
+                    )}
                     className={`${classes.btn} ${classes.follow}`}
                     onClick={() => {
+                      props.toggleFollowingInProgress(true, item.id);
                       APIRequests.postFollw(item.id).then((data) => {
                         if (data.resultCode === 0) {
                           props.follow(item.id);
                         }
+                        props.toggleFollowingInProgress(false, item.id);
                       });
                     }}
                   >
@@ -103,9 +113,11 @@ const Users = (props) => {
         onActiveClick={props.onActiveClick}
       />
       <UserItem
+        users={props.users}
         follow={props.follow}
         unfollow={props.unfollow}
-        users={props.users}
+        followingInProgress={props.followingInProgress}
+        toggleFollowingInProgress={props.toggleFollowingInProgress}
       />
       <div className={`${classes.btnShowMoreContaoner}  flexible jCenter`}>
         <button>SHOW MORE</button>

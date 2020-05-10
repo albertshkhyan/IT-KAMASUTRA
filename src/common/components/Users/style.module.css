@@ -1,69 +1,72 @@
 .userContaienr {
-    display: grid;
-    grid-template-columns: 125px 275px;
-    grid-template-rows: 133px 1fr;
-    gap: 5px 5px;
-    grid-template-areas: "a m" "b m";
-    margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 125px 275px;
+  grid-template-rows: 133px 1fr;
+  gap: 5px 5px;
+  grid-template-areas: "a m" "b m";
+  margin-bottom: 5px;
 }
 .paginationContainer {
-    width: 400px;
-    overflow: auto;
+  width: 400px;
+  overflow: auto;
 }
 .active {
-    font-weight: bold;
-    font-size: 1.2em;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .paginContent {
-    width: max-content;
-    cursor: pointer;
+  width: max-content;
+  cursor: pointer;
 }
 
 .avatar {
-    overflow: hidden;
+  overflow: hidden;
 }
-.avatar img{
-    width: 100%;
-    height: auto;
+.avatar img {
+  width: 100%;
+  height: auto;
 }
 .avatar {
-    grid-area: a;
+  grid-area: a;
 }
 .btnContainer {
-    grid-area: b;
-
+  grid-area: b;
 }
 .message {
-    grid-area: m;
-    background: rgb(107, 106, 106);
-    color: white;
-    padding: 5px;
+  grid-area: m;
+  background: rgb(107, 106, 106);
+  color: white;
+  padding: 5px;
 }
 
 .btnContainer .btn {
-    border: none;
-    padding: 3px;
-    width: 100%;
-    grid-area: b;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    letter-spacing: 1.3px;
-    border-radius: 7px;
+  border: none;
+  padding: 3px;
+  width: 100%;
+  grid-area: b;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  border-radius: 7px;
 }
 .btnContainer .btn:hover {
-    background-color: #efefef;
-    box-shadow: inset 0px 7px 15px 0px rgba(0, 0, 0, 0.15);
+  background-color: #efefef;
+  box-shadow: inset 0px 7px 15px 0px rgba(0, 0, 0, 0.15);
 }
 .btnContainer .btn.follow {
-    background:#01CC6B;
+  background: #01cc6b;
 }
 .btnContainer .btn.unfollow {
-    background:#E64244;
+  background: #e64244;
+}
+
+.btn:disabled {
+  background: gray !important;
+  cursor: wait;
 }
 
 .btnShowMoreContaoner {
-    margin: 15px;
+  margin: 15px;
 }
-
