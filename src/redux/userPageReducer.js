@@ -24,7 +24,7 @@ const userPageReducer = (state = initialState, action) => {
                 if (item.id === action.id) {
                     return ({
                         ...item,
-                        followed: false
+                        followed: true
                     })
                 }
                 return item;
@@ -36,7 +36,7 @@ const userPageReducer = (state = initialState, action) => {
                 if (item.id === action.id) {
                     return ({
                         ...item,
-                        followed: true
+                        followed: false
                     });
                 }
                 return item;
@@ -76,14 +76,18 @@ export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE,
     currentPage
 });
-export const follow = (id) => ({
-    type: FOLLOW,
-    id
-});
-export const unfollow = (id) => ({
-    type: UNFOLLOW,
-    id
-});
+export const follow = (id) => {
+    return {
+        type: FOLLOW,
+        id
+    }
+};
+export const unfollow = (id) => {
+    return {
+        type: UNFOLLOW,
+        id
+    }
+};
 export const setUsers = (users) => ({
     type: SET_USERS,
     users

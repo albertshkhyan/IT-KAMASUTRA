@@ -4,6 +4,7 @@ import userPhoto from "../../../assets/images/users.png";
 
 import classes from "./style.module.css";
 import { NavLink } from "react-router-dom";
+import * as axios from "axios";
 
 const Pagination = (props) => {
   let limit = props.pageSize;
@@ -40,35 +41,76 @@ const UserItem = (props) => {
       {props.users &&
         props.users.map((item) => {
           return (
-            <NavLink to={`/profile/${item.id}`}>
-              <div key={item.id} className={classes.userContaienr}>
+            <div key={item.id} className={classes.userContaienr}>
+              <NavLink to={`/profile/${item.id}`}>
                 <div className={classes.avatar}>
                   <img
                     src={item.photos.small ? item.photos.small : userPhoto}
                     alt={item.description}
                   />
                 </div>
-                <div className="name">
-                  <span>{item.name}</span>
-                </div>
+              </NavLink>
 
-                <div className={classes.message}>
-                  <span>{item.description}</span>
-                </div>
-
-                <div className={classes.btn}>
-                  {item.followed ? (
-                    <button onClick={() => props.follow(item.id)}>
-                      FOLLOW
-                    </button>
-                  ) : (
-                    <button onClick={() => props.unfollow(item.id)}>
-                      UNFOLLOW
-                    </button>
-                  )}
-                </div>
+              <div className="name">
+                <span>{item.name}</span>
               </div>
-            </NavLink>
+
+              <div className={classes.message}>
+                <span>{item.description}</span>
+              </div>
+
+              <div className={classes.btnContainer}>
+                {item.followed ? (
+                  <button
+                    className={`${classes.btn} ${classes.unfollow}`}
+                    onClick={() => {
+                      axios
+                        .delete(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "ae0b838f-0cd8-441f-a726-63236295e269",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          console.log("response UNFOLLOW", response);
+                          if (response.data.resultCode === 0) {
+                            props.unfollow(item.id);
+                          }
+                        });
+                    }}
+                  >
+                    UNFOLLOW
+                  </button>
+                ) : (
+                  <button
+                    className={`${classes.btn} ${classes.follow}`}
+                    onClick={() => {
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "ae0b838f-0cd8-441f-a726-63236295e269",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.follow(item.id);
+                          }
+                        });
+                    }}
+                  >
+                    FOLLOW
+                  </button>
+                )}
+              </div>
+            </div>
           );
         })}
     </>
@@ -84,7 +126,11 @@ const Users = (props) => {
         currentPage={props.currentPage}
         onActiveClick={props.onActiveClick}
       />
-      <UserItem users={props.users} />
+      <UserItem
+        follow={props.follow}
+        unfollow={props.unfollow}
+        users={props.users}
+      />
       <div className={`${classes.btnShowMoreContaoner}  flexible jCenter`}>
         <button>SHOW MORE</button>
       </div>

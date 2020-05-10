@@ -30,8 +30,9 @@
 .avatar {
     grid-area: a;
 }
-.btn {
+.btnContainer {
     grid-area: b;
+
 }
 .message {
     grid-area: m;
@@ -39,9 +40,27 @@
     color: white;
     padding: 5px;
 }
-.btn button{
+
+.btnContainer .btn {
+    border: none;
+    padding: 3px;
     width: 100%;
     grid-area: b;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    border-radius: 7px;
+}
+.btnContainer .btn:hover {
+    background-color: #efefef;
+    box-shadow: inset 0px 7px 15px 0px rgba(0, 0, 0, 0.15);
+}
+.btnContainer .btn.follow {
+    background:#01CC6B;
+}
+.btnContainer .btn.unfollow {
+    background:#E64244;
 }
 
 .btnShowMoreContaoner {
