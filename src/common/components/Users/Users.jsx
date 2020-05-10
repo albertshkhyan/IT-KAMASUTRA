@@ -1,10 +1,8 @@
-import React from "react";
-
-import userPhoto from "../../../assets/images/users.png";
-
-import classes from "./style.module.css";
+import APIRequests from './../../../api/api';
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
+import React from "react";
+import classes from "./style.module.css";
+import userPhoto from "../../../assets/images/users.png";
 
 const Pagination = (props) => {
   let limit = props.pageSize;
@@ -64,22 +62,11 @@ const UserItem = (props) => {
                   <button
                     className={`${classes.btn} ${classes.unfollow}`}
                     onClick={() => {
-                      axios
-                        .delete(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,
-                          {
-                            withCredentials: true,
-                            headers: {
-                              "API-KEY": "ae0b838f-0cd8-441f-a726-63236295e269",
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          console.log("response UNFOLLOW", response);
-                          if (response.data.resultCode === 0) {
-                            props.unfollow(item.id);
-                          }
-                        });
+                      APIRequests.deleteFollow(item.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.unfollow(item.id);
+                        }
+                      });
                     }}
                   >
                     UNFOLLOW
@@ -88,22 +75,11 @@ const UserItem = (props) => {
                   <button
                     className={`${classes.btn} ${classes.follow}`}
                     onClick={() => {
-                      axios
-                        .post(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,
-                          {},
-                          {
-                            withCredentials: true,
-                            headers: {
-                              "API-KEY": "ae0b838f-0cd8-441f-a726-63236295e269",
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode === 0) {
-                            props.follow(item.id);
-                          }
-                        });
+                      APIRequests.postFollw(item.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.follow(item.id);
+                        }
+                      });
                     }}
                   >
                     FOLLOW
