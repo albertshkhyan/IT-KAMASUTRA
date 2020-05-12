@@ -13,18 +13,20 @@ import Preloader from "./../Preloader/Preloader";
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
+import { getUsersAsncAC } from './../../../redux/userPageReducer';
 
 class UserContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true);
+    this.props.getUsersAsncAC(this.props.currentPage, this.props.pageSize)
+    // this.props.setIsFetching(true);
 
-    APIRequests.getUsers(this.props.currentPage, this.props.pageSize).then(
-      (data) => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalCount(data.totalCount);
-      }
-    );
+    // APIRequests.getUsers(this.props.currentPage, this.props.pageSize).then(
+    //   (data) => {
+    //     this.props.setIsFetching(false);
+    //     this.props.setUsers(data.items);
+    //     this.props.setTotalCount(data.totalCount);
+    //   }
+    // );
   }
 
   onActiveClick = (currentPage) => {
@@ -89,6 +91,7 @@ export default connect(mapStateToProps, {
   setUsers,
   setTotalCount,
   setCurrentPage,
+  getUsersAsncAC,
   setIsFetching,
   toggleFollowingInProgress,  
 })(UserContainer);

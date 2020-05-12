@@ -1,3 +1,6 @@
+import APIRequests from './../api/api';
+
+////action types
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -15,7 +18,6 @@ const initialState = {
     totalCount: 0,
     currentPage: 1,
     isFetching: false,
-    // followingInProgress : [7956, 7955, 7954, 7953 ]
     followingInProgress: []
 }
 
@@ -111,6 +113,17 @@ export const toggleFollowingInProgress = (isFetching, userID) => {
     })
 }
 
+export const getUsersAsncAC = (currentPage, pageSize) => (dispatch) => {
+    dispatch(setIsFetching(true));
+
+    APIRequests.getUsers(currentPage, pageSize).then(
+        (data) => {
+            dispatch(setIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalCount(data.totalCount));
+        }
+    );
+}
 
 
 
