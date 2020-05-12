@@ -1,25 +1,23 @@
 import {
   follow,
-  setUsers,
   unfollow,
-  setIsFetching,
-  setTotalCount,
+  followAsyncAC,
   setCurrentPage,
+  unfollowAsyncAC,
+  getUsersAsncAC, 
   toggleFollowingInProgress,
 } from "../../../redux/userPageReducer";
 
-import APIRequests from "../../../api/api";
 import Preloader from "./../Preloader/Preloader";
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import { getUsersAsncAC } from './../../../redux/userPageReducer';
+import {  } from './../../../redux/userPageReducer';
 
 class UserContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsersAsncAC(this.props.currentPage, this.props.pageSize)
+    this.props.getUsersAsncAC(this.props.currentPage, this.props.pageSize);
     // this.props.setIsFetching(true);
-
     // APIRequests.getUsers(this.props.currentPage, this.props.pageSize).then(
     //   (data) => {
     //     this.props.setIsFetching(false);
@@ -31,12 +29,13 @@ class UserContainer extends React.Component {
 
   onActiveClick = (currentPage) => {
     this.props.setCurrentPage(currentPage);
-    this.props.setIsFetching(true);
-    APIRequests.getUsers(currentPage, this.props.pageSize).then((data) => {
-      this.props.setIsFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalCount(data.totalCount);
-    });
+    this.props.getUsersAsncAC(currentPage, this.props.pageSize);
+    
+    // APIRequests.getUsers(currentPage, this.props.pageSize).then((data) => {
+    //   this.props.setIsFetching(false);
+    //   this.props.setUsers(data.items);
+    //   this.props.setTotalCount(data.totalCount);
+    // });
   };
 
   render() {
@@ -51,10 +50,12 @@ class UserContainer extends React.Component {
           pageSize={this.props.pageSize}
           unfollow={this.props.unfollow}
           totalCount={this.props.totalCount}
-          currentPage={this.props.currentPage}
           onActiveClick={this.onActiveClick}
-          toggleFollowingInProgress = {this.props.toggleFollowingInProgress}
+          currentPage={this.props.currentPage}
+          followAsyncAC = {this.props.followAsyncAC}
+          unfollowAsyncAC = {this.props.unfollowAsyncAC}
           followingInProgress = {this.props.followingInProgress}
+          toggleFollowingInProgress = {this.props.toggleFollowingInProgress}
         />
       </>
     );
@@ -88,10 +89,9 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
-  setTotalCount,
   setCurrentPage,
   getUsersAsncAC,
-  setIsFetching,
   toggleFollowingInProgress,  
+  followAsyncAC,
+  unfollowAsyncAC
 })(UserContainer);

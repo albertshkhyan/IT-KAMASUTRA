@@ -65,13 +65,15 @@ const UserItem = (props) => {
                     )}
                     className={`${classes.btn} ${classes.unfollow} `}
                     onClick={() => {
-                      props.toggleFollowingInProgress(true, item.id);
-                      APIRequests.deleteFollow(item.id).then((data) => {
-                        if (data.resultCode === 0) {
-                          props.unfollow(item.id);
-                        }
-                        props.toggleFollowingInProgress(false, item.id);
-                      });
+                      props.unfollowAsyncAC(item);
+
+                      // props.toggleFollowingInProgress(true, item.id);
+                      // APIRequests.deleteFollow(item.id).then((data) => {
+                      //   if (data.resultCode === 0) {
+                      //     props.unfollow(item.id);
+                      //   }
+                      //   props.toggleFollowingInProgress(false, item.id);
+                      // });
                     }}
                   >
                     UNFOLLOW
@@ -83,13 +85,15 @@ const UserItem = (props) => {
                     )}
                     className={`${classes.btn} ${classes.follow}`}
                     onClick={() => {
-                      props.toggleFollowingInProgress(true, item.id);
-                      APIRequests.postFollw(item.id).then((data) => {
-                        if (data.resultCode === 0) {
-                          props.follow(item.id);
-                        }
-                        props.toggleFollowingInProgress(false, item.id);
-                      });
+                      props.followAsyncAC(item);
+
+                      // props.toggleFollowingInProgress(true, item.id);
+                      // APIRequests.postFollw(item.id).then((data) => {
+                      //   if (data.resultCode === 0) {
+                      //     props.follow(item.id);
+                      //   }
+                      //   props.toggleFollowingInProgress(false, item.id);
+                      // });
                     }}
                   >
                     FOLLOW
@@ -116,6 +120,8 @@ const Users = (props) => {
         users={props.users}
         follow={props.follow}
         unfollow={props.unfollow}
+        followAsyncAC={props.followAsyncAC}
+        unfollowAsyncAC={props.unfollowAsyncAC}
         followingInProgress={props.followingInProgress}
         toggleFollowingInProgress={props.toggleFollowingInProgress}
       />
