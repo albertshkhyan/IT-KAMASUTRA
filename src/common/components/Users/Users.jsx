@@ -1,4 +1,3 @@
-import APIRequests from "./../../../api/api";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import classes from "./style.module.css";
