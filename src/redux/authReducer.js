@@ -1,3 +1,5 @@
+import APIRequests from "../api/api";
+
 const SET_USER_DATA = "SET_USER_DATA";
 
 const initialState = {
@@ -25,6 +27,16 @@ export const setUserData = (id, login, email) => ({
         login,
         email
     }
-})
+});
+
+export const authMeThunkCreator = () => (dispatch) => {
+    APIRequests.authMe()
+    .then((data) => {
+      if(data.resultCode === 0) {
+          const {id, login, email} = data.data;
+          dispatch(setUserData(id, login, email));
+      }
+    });
+}
 
 export default authReducer;

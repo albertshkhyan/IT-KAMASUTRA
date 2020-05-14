@@ -1,18 +1,22 @@
 import { setIsFetching, setUsers } from "../../../redux/userPageReducer";
+import {
+  setProfileData,
+  profileThunkCreator,
+} from "./../../../redux/profilePageReducer";
 
-import APIRequests from "./../../../api/api";
 import Profile from "./Profile";
 import React from "react";
 import { connect } from "react-redux";
-import { setProfileData } from "./../../../redux/profilePageReducer";
 import { withRouter } from "react-router-dom";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let { userID } = this.props.match.params;
-    APIRequests.profile(userID).then((data) => {
-      this.props.setProfileData(data);
-    });
+    this.props.profileThunkCreator(userID);
+
+    // APIRequests.profile(userID).then((data) => {
+    //   this.props.setProfileData(data);
+    // });
   }
 
   render() {
@@ -37,7 +41,8 @@ const mapStateToProps = (state) => {
 
 ////variant 2
 export default connect(mapStateToProps, {
-  setIsFetching,
   setUsers,
+  setIsFetching,
   setProfileData,
+  profileThunkCreator,
 })(withRouter(ProfileContainer));

@@ -1,3 +1,5 @@
+import APIRequests from "../api/api";
+
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_POST = "ADD_POST";
 const PROFILE = "PROFILE";
@@ -26,42 +28,49 @@ const initialState = {
         }
     ],
     newPostText: 'This is my post, :D !!!',
-    profileData : null
+    profileData: null
 }
 
 function profilePageReducer(state = initialState, action) {
-    switch(action.type) {
-        case ADD_POST : 
+    switch (action.type) {
+        case ADD_POST:
             let id = +state.posts[state.posts.length - 1].id + 1 + '';
             return {
                 ...state,
-                posts : [...state.posts, {id : id, message : state.newPostText, likesCount : 0}],
-                newPostText : ""
+                posts: [...state.posts, { id: id, message: state.newPostText, likesCount: 0 }],
+                newPostText: ""
             };
-        case UPDATE_NEW_POST_TEXT : 
+        case UPDATE_NEW_POST_TEXT:
             return {
                 ...state,
-                newPostText : action.newText
+                newPostText: action.newText
             };
 
-        case PROFILE : return {
+        case PROFILE: return {
             ...state,
-            profileData : action.profileData
+            profileData: action.profileData
         }
         default: return state;
-    
+
     }
 }
 
-export const addPostActionCreator = () => ({type : ADD_POST});
+export const addPostActionCreator = () => ({ type: ADD_POST });
 
-export const setProfileData = (profileData) => ({type : PROFILE, profileData});
+export const setProfileData = (profileData) => ({ type: PROFILE, profileData });
 
 export const updateNePostActionCreator = (newText) => ({
-    type : UPDATE_NEW_POST_TEXT,
+    type: UPDATE_NEW_POST_TEXT,
     newText
 
 });
+
+
+export const profileThunkCreator = (userID) => (dispatch) => {
+    APIRequests.profile(userID).then((data) => {
+        dispatch(setProfileData(data));
+    });
+}
 
 export default profilePageReducer;
 
