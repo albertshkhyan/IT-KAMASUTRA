@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.usersPage.isFetching,
     profileData: state.profilePage.profileData,
+    isAuth: state.auth.isAuth,
   };
 };
 

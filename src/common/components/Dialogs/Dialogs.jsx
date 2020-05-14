@@ -1,10 +1,10 @@
 import React from "react";
 
-
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 import classes from "./style.module.css";
+import { Redirect } from "react-router-dom";
 
 const Dialogs = (props) => {
   const state = props.dialogPage;
@@ -16,19 +16,18 @@ const Dialogs = (props) => {
     <DialogItem name={name} id={id} />
   ));
 
-  // const handleOnChange = (e) => {
-  //   props.dispatch(newMessageBodyCreator(e.target.value));
-  // };
   const handleOnChange = (e) => {
     props.newMessageBody(e);
   };
 
-  // const handleOnClick = () => {
-  //   props.dispatch(addNewMessageBody());
-  // };
   const handleOnClick = () => {
     props.addNewMessage();
   };
+
+  //// FIXME - not correct, because Redirect is side-effect case 
+  if(!props.isAuth) {
+    return <Redirect to="/login" />
+  }
 
   return (
     <div className={classes.dialogs}>

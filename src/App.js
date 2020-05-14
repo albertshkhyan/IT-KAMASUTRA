@@ -8,6 +8,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import ProfileContainer from './common/components/Profile/ProfileContainer';
 import HeaderContainer from './common/components/Header/HeaderContainer';
+import Login from './common/components/Login/Login';
 
 function App(props) {
   return (
@@ -20,6 +21,7 @@ function App(props) {
           <Route exact path="/dialogs" component={DialogsContainer} />
           <Route path="/profile/:userID?" component={ProfileContainer} />
           <Route path="/users" component={UsersContainer} />
+          <Route path="/login" component={Login} />
         </div>
       </div>
     </BrowserRouter>
