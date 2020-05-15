@@ -8,7 +8,7 @@ import Profile from "./Profile";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import withRedirectAuth from '../../../hoc/withRedirectAuth';
+import withRedirectAuth from "../../../hoc/withRedirectAuth";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 //   return <ProfileContainer {...props}/>;
 // };
 // const AuthRedirectContainer = connect(mapStateToPropsForRedirectContainer, null)(RedirectContainer);
-const AuthRedirectContainer =  withRedirectAuth(ProfileContainer);
+const AuthRedirectContainer = withRedirectAuth(ProfileContainer);
 
 export default connect(mapStateToProps, {
   setUsers,

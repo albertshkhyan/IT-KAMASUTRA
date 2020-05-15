@@ -4,7 +4,6 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 import classes from "./style.module.css";
-import { Redirect } from "react-router-dom";
 
 const Dialogs = (props) => {
   const state = props.dialogPage;
