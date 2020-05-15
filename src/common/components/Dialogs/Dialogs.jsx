@@ -24,11 +24,6 @@ const Dialogs = (props) => {
     props.addNewMessage();
   };
 
-  //// FIXME - not correct, because Redirect is side-effect case 
-  if(!props.isAuth) {
-    return <Redirect to="/login" />
-  }
-
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>{dialogElements}</div>

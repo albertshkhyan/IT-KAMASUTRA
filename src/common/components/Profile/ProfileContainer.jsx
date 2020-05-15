@@ -8,7 +8,7 @@ import Profile from "./Profile";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import withRedirectAuth from '../../../hoc/withRedirectAuth';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -32,17 +32,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-////NOTE create container compoennt for Redirect, and that component wrapped connect for isAuth, FOR SAVE SNGLE RESPONSIBILITY PRINCIP
-const mapStateToPropsForRedirectContainer = (state) => ({
-    isAuth: state.auth.isAuth,
-});
-const RedirectContainer = (props) => {
-  if (!props.isAuth) {
-    return <Redirect to="/login" />;
-  }
-  return <ProfileContainer {...props}/>;
-};
-const AuthRedirectContainer = connect(mapStateToPropsForRedirectContainer, null)(RedirectContainer);
+////NOTE -  create container compoennt for Redirect, and that component wrapped connect for isAuth, FOR SAVE SNGLE RESPONSIBILITY PRINCIP
+// const mapStateToPropsForRedirectContainer = (state) => ({
+//     isAuth: state.auth.isAuth,
+// });
+// const RedirectContainer = (props) => {
+//   if (!props.isAuth) {
+//     return <Redirect to="/login" />;
+//   }
+//   return <ProfileContainer {...props}/>;
+// };
+// const AuthRedirectContainer = connect(mapStateToPropsForRedirectContainer, null)(RedirectContainer);
+const AuthRedirectContainer =  withRedirectAuth(ProfileContainer);
 
 export default connect(mapStateToProps, {
   setUsers,
