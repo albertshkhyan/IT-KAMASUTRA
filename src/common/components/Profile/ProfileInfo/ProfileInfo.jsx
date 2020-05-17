@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./style.module.css";
 import Preloader from "./../../Preloader/Preloader";
+import StatusProfile from "./StatusProfile";
 
 const ProfileInfo = (props) => {
   return (
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
           </div>
           <div className={classes.avatarDescription}>
             {" "}
-            avatar + description
+            <StatusProfile status="Some status" />
             <div>
               <span>{props.profileData.fullName}</span>
             </div>
