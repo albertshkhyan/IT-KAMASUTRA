@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
@@ -16,16 +15,10 @@ const Dialogs = (props) => {
     <DialogItem name={name} id={id} />
   ));
 
-  // const handleOnChange = (e) => {
-  //   props.dispatch(newMessageBodyCreator(e.target.value));
-  // };
   const handleOnChange = (e) => {
     props.newMessageBody(e);
   };
 
-  // const handleOnClick = () => {
-  //   props.dispatch(addNewMessageBody());
-  // };
   const handleOnClick = () => {
     props.addNewMessage();
   };

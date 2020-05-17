@@ -14,6 +14,11 @@ const Dashboard = () => {
                                 Profile
                             </NavLink>
                         </li> 
+                        <li className={classes.item}>
+                            <NavLink activeClassName={classes.activeLink}  to="/login">
+                                Login
+                            </NavLink>
+                        </li> 
                         <li className={classes.item} >
                             <NavLink activeClassName={classes.activeLink}  to="/dialogs">
                                 Messages
