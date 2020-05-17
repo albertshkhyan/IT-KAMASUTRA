@@ -8,7 +8,7 @@ const MyPosts = (props) => {
   const myRef = React.createRef();
 
   const postsElement = props.posts.map(({ id, message, likesCount }) => (
-    <Post message={message} likesCount={likesCount} />
+    <Post key={id} message={message} likesCount={likesCount} />
   ));
 
   const handleClick = (e) => {
