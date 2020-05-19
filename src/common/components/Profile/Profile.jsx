@@ -10,6 +10,8 @@ const Profile = (props) => {
       <ProfileInfo
         profileData={props.profileData}
         isFetching={props.isFetching}
+        status={props.status}
+        updateStatus={props.updateStatusAAC}
       />
       <MyPostContainer />
     </div>

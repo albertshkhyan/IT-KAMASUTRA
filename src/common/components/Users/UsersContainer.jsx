@@ -12,7 +12,6 @@ import Preloader from "./../Preloader/Preloader";
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import {  } from './../../../redux/userPageReducer';
 
 class UserContainer extends React.Component {
   componentDidMount() {

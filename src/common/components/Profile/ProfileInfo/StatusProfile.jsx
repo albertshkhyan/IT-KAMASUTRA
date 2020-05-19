@@ -8,11 +8,18 @@ class StatusProfile extends Component {
   activeEditMode = () => {
     this.setState({
       editMode: true,
+      status: this.props.status,
     });
   };
-  deActivateEditMode = () => {
+  deActivateEditMode = (event) => {
     this.setState({
       editMode: false,
+    });
+    this.props.updateStatus(event.target.value);
+  };
+  onStatusChangge = (event) => {
+    this.setState({
+      status: event.target.value,
     });
   };
   render() {
@@ -24,14 +31,15 @@ class StatusProfile extends Component {
               <input
                 autoFocus
                 type="text"
-                value={this.props.status}
+                value={this.state.status}
                 onBlur={this.deActivateEditMode}
+                onChange={this.onStatusChangge}
               />
             </div>
           ) : (
             <div>
               <span onDoubleClick={this.activeEditMode}>
-                {this.props.status}
+                {this.props.status || "no status"}
               </span>
             </div>
           )}

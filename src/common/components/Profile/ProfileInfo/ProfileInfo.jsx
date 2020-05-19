@@ -14,9 +14,12 @@ const ProfileInfo = (props) => {
           </div>
           <div className={classes.avatarDescription}>
             {" "}
-            <StatusProfile status="Some status" />
+            <StatusProfile
+              status={props.status}
+              updateStatus={props.updateStatus}
+            />
             <div>
-              <span>{props.profileData.fullName}</span>
+              <h3>{props.profileData.fullName}</h3>
             </div>
           </div>
         </div>
