@@ -1,21 +1,27 @@
+import React from "react";
+
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+
 import { setIsFetching, setUsers } from "../../../redux/userPageReducer";
 import {
   setProfileData,
+  updateStatusAAC,
   profileThunkCreator,
+  getStatusAsyncActionCreator,
 } from "./../../../redux/profilePageReducer";
 
 import Profile from "./Profile";
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import withRedirectAuth from "../../../hoc/withRedirectAuth";
-import { compose } from "redux";
+
+// import withRedirectAuth from "../../../hoc/withRedirectAuth";
 
 class ProfileContainer extends React.Component {
-
   componentDidMount() {
     let { userID } = this.props.match.params;
+    if (!userID) userID = 7837;
     this.props.profileThunkCreator(userID);
+    this.props.getStatusAsyncActionCreator(userID);
   }
 
   render() {
@@ -27,6 +33,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.usersPage.isFetching,
     profileData: state.profilePage.profileData,
+    status: state.profilePage.status,
   };
 };
 
@@ -44,8 +51,10 @@ export default compose(
     setUsers,
     setIsFetching,
     setProfileData,
+    updateStatusAAC,
     profileThunkCreator,
+    getStatusAsyncActionCreator,
   }),
-  withRouter,
-  withRedirectAuth
+  withRouter
+  // withRedirectAuth
 )(ProfileContainer);

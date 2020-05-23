@@ -9,7 +9,7 @@ const mapStateToPropsForRedirectContainer = (state) => ({
 });
 const withRedirectAuth = (Component) => {
     const WrappedRedirectComponent = (props) => {
-        if (!props.isAuth) {
+        if (props.isAuth === false) {
             return <Redirect to="/login" />;
         }
         return <Component {...props} />;

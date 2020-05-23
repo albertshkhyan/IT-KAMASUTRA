@@ -1,8 +1,10 @@
-import APIRequests from "../api/api";
+import { usersAPI, profileAPI } from "../api/api";
 
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_POST = "ADD_POST";
 const PROFILE = "PROFILE";
+const SET_STATUS = "SET_STATUS";
+
 
 const initialState = {
     posts: [
@@ -28,7 +30,8 @@ const initialState = {
         }
     ],
     newPostText: 'This is my post, :D !!!',
-    profileData: null
+    profileData: null,
+    status: ""
 }
 
 function profilePageReducer(state = initialState, action) {
@@ -50,6 +53,11 @@ function profilePageReducer(state = initialState, action) {
             ...state,
             profileData: action.profileData
         }
+        case SET_STATUS: return {
+            ...state,
+            status: action.status
+
+        }
         default: return state;
 
     }
@@ -57,7 +65,9 @@ function profilePageReducer(state = initialState, action) {
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 
-export const setProfileData = (profileData) => ({ type: PROFILE, profileData });
+export const setProfileData = (profileData) => {
+    return ({ type: PROFILE, profileData })
+};
 
 export const updateNePostActionCreator = (newText) => ({
     type: UPDATE_NEW_POST_TEXT,
@@ -65,11 +75,33 @@ export const updateNePostActionCreator = (newText) => ({
 
 });
 
+export const setStatus = (status) => {
+    return ({ type: SET_STATUS, status })
+};
+
 
 export const profileThunkCreator = (userID) => (dispatch) => {
-    APIRequests.profile(userID).then((data) => {
+    usersAPI.profile(userID).then(({ data }) => {
         dispatch(setProfileData(data));
     });
+}
+
+export const getStatusAsyncActionCreator = (id) => {
+    return (dispatch) => {
+        profileAPI.getStatus(id).then(({ data }) => {
+            return dispatch(setStatus(data))
+        })
+    }
+}
+export const updateStatusAAC = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status).then(({ data }) => {
+            if (data.resultCode === 0) {
+                dispatch(setStatus(status))
+
+            }
+        })
+    }
 }
 
 export default profilePageReducer;

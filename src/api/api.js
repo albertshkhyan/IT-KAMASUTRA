@@ -8,31 +8,77 @@ const instance = axios.create({
     }
 });
 
-const APIRequests = {
+// const APIRequests = {
+//     getUsers(currentPage = 1, pageSize = 10) {
+//         return instance
+//             .get(`users/?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+//     },
+
+//     deleteFollow(id) {
+//         return instance
+//             .delete(`follow/${id}`).then(response => response.data);
+//     },
+
+//     postFollw(id) {//follwo fix name
+//         return instance
+//             .post(`follow/${id}`).then(response => response.data);
+//     },
+
+//     authMe() {
+//         return instance.get(`auth/me`).then(response => response.data);
+//     },
+
+//     profile(userID = 7837) {//ge4Me
+//         return instance
+//             .get(`profile/${userID}`).then(response => response.data);
+//     },
+// }
+
+const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance
             .get(`users/?page=${currentPage}&count=${pageSize}`).then(response => response.data)
     },
-
     deleteFollow(id) {
         return instance
-            .delete(`follow/${id}`).then(response => response.data);
+            .delete(`follow/${id}`);
     },
-
-    postFollw(id) {
+    postFollow(id) {//
         return instance
-            .post(`follow/${id}`).then(response => response.data);
+            .post(`follow/${id}`);
     },
 
-    authMe() {
-        return instance.get(`auth/me`).then(response => response.data);
-    },
-
-    profile(userID = 7837) {
-        return instance
-            .get(`profile/${userID}`).then(response => response.data);
+    profile(userID) {
+        return profileAPI.profile(userID);
     },
 }
 
 
-export default APIRequests;
+const authAPI = {
+    authMe() {
+        return instance.get(`auth/me`);
+    },
+}
+
+const profileAPI = {
+    
+    profile(userID) {
+        return instance
+            .get(`profile/${userID}`);
+    },
+    getStatus(id) {
+        return instance
+            .get(`profile/status/${id}`);
+    },
+    updateStatus(status) {
+        return instance
+            .put("profile/status", { status });
+    }
+}
+
+export {
+    authAPI,
+    usersAPI,
+    profileAPI,
+}
+

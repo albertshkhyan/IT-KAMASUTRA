@@ -5,24 +5,46 @@ import Preloader from "./../../Preloader/Preloader";
 import StatusProfile from "./StatusProfile";
 
 const ProfileInfo = (props) => {
+  if (!props.profileData) {
+    return <Preloader />;
+  }
   return (
     <>
-      {props.profileData ? (
+      <div className={classes.ProfileInfo}>
+        <div>
+          <img src={props.profileData.photos.large} alt="estaentumundo" />
+        </div>
+        <div className={classes.avatarDescription}>
+          {" "}
+          <StatusProfile
+            status={props.status}
+            updateStatus={props.updateStatus}
+          />
+          <div>
+            <h3>{props.profileData.fullName}</h3>
+          </div>
+        </div>
+      </div>
+
+      {/* {props.profileData ? (
         <div className={classes.ProfileInfo}>
           <div>
             <img src={props.profileData.photos.large} alt="estaentumundo" />
           </div>
           <div className={classes.avatarDescription}>
             {" "}
-            <StatusProfile status="Some status" />
+            <StatusProfile
+              status={props.status}
+              updateStatus={props.updateStatus}
+            />
             <div>
-              <span>{props.profileData.fullName}</span>
+              <h3>{props.profileData.fullName}</h3>
             </div>
           </div>
         </div>
       ) : (
         <Preloader />
-      )}
+      )} */}
     </>
   );
 };

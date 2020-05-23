@@ -1,4 +1,4 @@
-import APIRequests from './../api/api';
+import { usersAPI } from './../api/api';
 
 ////action types
 const FOLLOW = "FOLLOW";
@@ -86,7 +86,6 @@ export const setTotalCount = (totalCount) => ({
     totalCount
 });
 export const setCurrentPage = (currentPage) => {
-    debugger
     return ({
         type: SET_CURRENT_PAGE,
         currentPage
@@ -118,7 +117,7 @@ export const toggleFollowingInProgress = (isFetching, userID) => {
 
 export const getUsersAsncAC = (currentPage, pageSize) => (dispatch) => {
     dispatch(setIsFetching(true));
-    APIRequests.getUsers(currentPage, pageSize).then(
+    usersAPI.getUsers(currentPage, pageSize).then(
         (data) => {
             dispatch(setIsFetching(false));
             dispatch(setUsers(data.items));
@@ -129,7 +128,7 @@ export const getUsersAsncAC = (currentPage, pageSize) => (dispatch) => {
 
 export const followAsyncAC = (item) => (dispatch) => {
     dispatch(toggleFollowingInProgress(true, item.id));
-    APIRequests.postFollw(item.id).then((data) => {
+    usersAPI.postFollow(item.id).then(({data}) => {
         if (data.resultCode === 0) {
             dispatch(follow(item.id));
         }
@@ -140,7 +139,7 @@ export const followAsyncAC = (item) => (dispatch) => {
 
 export const unfollowAsyncAC = (item) => (dispatch) => {
     dispatch(toggleFollowingInProgress(true, item.id));
-    APIRequests.deleteFollow(item.id).then((data) => {
+    usersAPI.deleteFollow(item.id).then(({data}) => {
         if (data.resultCode === 0) {
             dispatch(unfollow(item.id));
         }
