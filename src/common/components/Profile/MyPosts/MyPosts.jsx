@@ -2,44 +2,48 @@ import React from "react";
 
 import classes from "./style.module.css";
 import Post from "./Post/Post";
+import { Field, reduxForm } from "redux-form";
 
 const MyPosts = (props) => {
-  // console.log('MyPosts  rendered after chenge ✅');
-  const myRef = React.createRef();
-
   const postsElement = props.posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likesCount={likesCount} />
   ));
 
-  const handleClick = (e) => {
-    myRef.current.value && props.addPost();
-  };
-
-  const handleOnChange = (e) => {
-    props.updateNewPostText(e.target.value);
+  const onSubmitHandle = (values) => {
+    let isEmpty = Object.keys(values).length;
+    isEmpty && props.addPost(values.myPostTextarea);
   };
 
   return (
     <div className={classes.postsBlock}>
       <div className={classes.posts}>
         <h2>My Posts</h2>
-        <div>
-          <div>
-            <textarea
-              ref={myRef}
-              onChange={handleOnChange}
-              placeholder="Your News"
-              value={props.newPostText}
-            ></textarea>
-          </div>
-          <div>
-            <button onClick={handleClick}>Add Post</button>
-          </div>
-        </div>
-
+        <MyPostsReduxForm onSubmit={onSubmitHandle} />
         <div className={classes.posts}>{postsElement}</div>
       </div>
     </div>
   );
 };
+
+const MyPostsForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          name="myPostTextarea"
+          component="textarea"
+          placeholder="Your News"
+        />
+      </div>
+      <div>
+        <button>Add Post</button>
+      </div>
+    </form>
+  );
+};
+
+const MyPostsReduxForm = reduxForm({
+  form: "myPostContainer",
+})(MyPostsForm);
+
 export default MyPosts;

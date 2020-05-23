@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class StatusProfile extends Component {
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       editMode: false,
       status: this.props.status,
@@ -11,7 +10,6 @@ class StatusProfile extends Component {
   }
   ////NOTE - We can  implement this, with toggle, that is with toggle (with one function -> !this.state.editMode)
   activeEditMode = () => {
-    debugger;
     this.setState({
       editMode: true,
     });
@@ -37,8 +35,6 @@ class StatusProfile extends Component {
   }
 
   render() {
-    // console.log("render", this.props.status);
-    debugger;
 
     return (
       <div className="StatusProfile">
