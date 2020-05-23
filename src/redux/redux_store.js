@@ -12,7 +12,7 @@ const reducers = combineReducers({
     dialogPage: dialogPageReducer,
     profilePage: profilePageReducer,
     usersPage: userPageReducer,
-    auth: authReducer
+    auth: authReducer 
 });
 
 ////not working thunk-middleware -> TypeError: store.getState is not a function  - ❌

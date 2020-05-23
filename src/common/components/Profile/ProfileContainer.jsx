@@ -17,9 +17,9 @@ import Profile from "./Profile";
 // import withRedirectAuth from "../../../hoc/withRedirectAuth";
 
 class ProfileContainer extends React.Component {
-
   componentDidMount() {
     let { userID } = this.props.match.params;
+    if (!userID) userID = 7837;
     this.props.profileThunkCreator(userID);
     this.props.getStatusAsyncActionCreator(userID);
   }
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.usersPage.isFetching,
     profileData: state.profilePage.profileData,
-    status : state.profilePage.status
+    status: state.profilePage.status,
   };
 };
 
@@ -53,8 +53,8 @@ export default compose(
     setProfileData,
     updateStatusAAC,
     profileThunkCreator,
-    getStatusAsyncActionCreator
+    getStatusAsyncActionCreator,
   }),
-  withRouter,
+  withRouter
   // withRedirectAuth
 )(ProfileContainer);

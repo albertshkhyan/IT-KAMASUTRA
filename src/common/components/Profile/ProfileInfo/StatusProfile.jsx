@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 
 class StatusProfile extends Component {
-  state = {
-    editMode: false,
-  };
+  constructor(props) {
+    super(props);
+    debugger;
+    this.state = {
+      editMode: false,
+      status: this.props.status,
+    };
+  }
   ////NOTE - We can  implement this, with toggle, that is with toggle (with one function -> !this.state.editMode)
   activeEditMode = () => {
+    debugger;
     this.setState({
       editMode: true,
-      status: this.props.status,
     });
+    
   };
   deActivateEditMode = (event) => {
     this.setState({
@@ -22,7 +28,18 @@ class StatusProfile extends Component {
       status: event.target.value,
     });
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status,
+      });
+    }
+  }
+
   render() {
+    // console.log("render", this.props.status);
+    debugger;
+
     return (
       <div className="StatusProfile">
         <div className="statusCXontainer">
