@@ -8,17 +8,18 @@ import { Field, reduxForm } from "redux-form";
 
 const Dialogs = (props) => {
   const state = props.dialogPage;
-  const messagesElements = state.messages.map(({ id, message }) => (
+  const messagesElements = state.messages.map(
+    ({ id, message }) =>
     <Message key={id} message={message} id={id} />
-  ));
+  );
 
   const dialogElements = state.dialogs.map(({ name, id }) => (
     <DialogItem key={id} name={name} id={id} />
   ));
 
   const onAddNewMessage = (values) => {
-    // console.log(values.message);
-    props.addNewMessage(values.message);
+    let isEmpty = Object.keys(values).length;
+    isEmpty && props.addNewMessage(values.message);
   };
 
   return (
