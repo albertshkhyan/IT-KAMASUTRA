@@ -1,5 +1,6 @@
 .Textarea {
-  width: 20%;
+  /* width: 20%; */
+  width: max-content;
 
 }
 

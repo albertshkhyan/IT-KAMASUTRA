@@ -3,6 +3,7 @@ import React from "react";
 import styles from "../style.module.css";
 
 const Textarea = ({ meta, input, ...restProps }) => {
+    debugger
   const { error, touched } = meta;
   const isCheck = touched && error;
   return (
