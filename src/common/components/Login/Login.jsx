@@ -5,7 +5,7 @@ const Login = (props) => {
   const submit = (some) => {
       //pass values from store.getState().form
       //NOTE - In here we can call ascyn actions - for validation
-    console.log("some", some);
+    // console.log("some", some);
   };
   return (
     <div className="Login">

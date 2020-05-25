@@ -1,13 +1,12 @@
 import React from "react";
-
 import FormControl from "./../FormControl";
 
-const Textarea = (props) => {
+const Input = (props) => {
   const { input, ...restProps } = props;
   return (
     <FormControl {...props}>
-      <textarea {...input} {...restProps}></textarea>
+      <input {...input} {...restProps} />
     </FormControl>
   );
 };
-export default Textarea;
+export default Input;

@@ -8,7 +8,6 @@ import { reduxForm } from "redux-form";
 const maxLengthValidator = maxLength(10);
 
 const MyPostsForm = (props) => {
-  debugger;
   return (
     <form onSubmit={props.handleSubmit}>
       <div>

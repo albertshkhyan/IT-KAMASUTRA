@@ -1,19 +1,19 @@
-.Textarea {
+.container {
   /* width: 20%; */
   width: max-content;
-
 }
 
-.Textarea > div.textareaContent {
-    border: 2px solid red;
+.container > div.warningContent {
+  width: inherit;
+  border: 2px solid red;
 }
 
-.Textarea span {
-    color: red;
-    font-weight: bold;
-    letter-spacing: 1.2px;
+.container span {
+  color: red;
+  font-weight: bold;
+  letter-spacing: 1.2px;
 }
-.Textarea span::before {
+.container span::before {
   content: "!";
   display: inline-block;
   width: 17px;
