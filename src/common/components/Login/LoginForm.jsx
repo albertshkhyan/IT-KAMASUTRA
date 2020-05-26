@@ -1,5 +1,7 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import Input from "./../../FormControl/Input/Inpuit";
+import { required } from "./../../../utils/validators";
 
 const LoginForm = (props) => {
   return (
@@ -13,7 +15,8 @@ const LoginForm = (props) => {
           <div>
             <Field
               placeholder="login"
-              component="input"
+              component={Input}
+              validate={[required]}
               type="text"
               name="login"
             />
@@ -21,23 +24,21 @@ const LoginForm = (props) => {
           <div>
             <Field
               placeholder="password"
-              component="input"
+              component={Input}
+              validate={[required]}
               type="password"
               name="password"
             />
           </div>
           <div className="flexible">
-            <div>
-              <Field
-                component="input"
-                type="checkbox"
-                name="checkbox"
-                id="rem"
-              />
-            </div>
-            <div>
-              <label htmlFor="rem">Remember</label>
-            </div>
+            <Field
+              component={Input}
+              validate={[required]}
+              type="checkbox"
+              name="checkbox"
+              id="rem"
+            />
+            <label htmlFor="rem">Remember</label>
           </div>
           {/* button in form do auto submit */}
           <button>Submit</button>

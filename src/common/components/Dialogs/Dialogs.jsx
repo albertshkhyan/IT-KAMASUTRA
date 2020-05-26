@@ -5,6 +5,8 @@ import Message from "./Message/Message";
 
 import classes from "./style.module.css";
 import { Field, reduxForm } from "redux-form";
+import Textarea from './../../FormControl/Textarea/Textarea';
+import { required, maxLength } from './../../../utils/validators';
 
 const Dialogs = (props) => {
   const state = props.dialogPage;
@@ -28,13 +30,16 @@ const Dialogs = (props) => {
 
       <div className={classes.messages}>
         {messagesElements}
-        <div>
+    
+      </div>
+      <div>
           <AddNewMessageFormRedux onSubmit={onAddNewMessage} />
         </div>
-      </div>
     </div>
   );
 };
+
+const maxLengthMessage = maxLength(100);//validator creator
 
 const AddNewMessageForm = (props) => {
   return (
@@ -47,7 +52,8 @@ const AddNewMessageForm = (props) => {
       <Field
         name="message"
         placeholder="Enter your message"
-        component="textarea"
+        component={Textarea}
+        validate={[required, maxLengthMessage]}
       />
       <div>
         <button>ADD MESSAGE</button>
