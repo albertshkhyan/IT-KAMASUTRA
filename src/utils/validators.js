@@ -10,3 +10,10 @@ export const required = (value) => {
 export const maxLength = (max) => (value) => {
     return value && value.length > max ? `Must be ${max} characters or less` : undefined;
 }
+
+export const minLengthPassowrd = (max) => (value) => {
+    return value && value.length < max ? `Enter a password longer than ${max} characters` : undefined;
+}
+
+
+export const email = value => value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : undefined;

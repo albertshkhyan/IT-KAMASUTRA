@@ -25,3 +25,10 @@
 
   color: white;
 }
+
+.commonErrorContainer {
+  width: max-content;
+  border:1px solid #BF7A76;
+  background: #FEDCE0;
+  color: #BF7A76;
+}

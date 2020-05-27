@@ -10,6 +10,7 @@ const Login = (props) => {
     //NOTE - In here we can call ascyn actions - for validation
     // console.log("some", some);
     let { email, password, rememberMe } = values;
+    debugger
     props.loginThunkCreator(email, password, rememberMe);
   };
   if (props.isAuth) {

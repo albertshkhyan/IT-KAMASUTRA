@@ -1,22 +1,21 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import Input from "./../../FormControl/Input/Inpuit";
-import { required } from "./../../../utils/validators";
+import { required, minLengthPassowrd, email } from "./../../../utils/validators";
+import styles from "../../FormControl/style.module.css";
 
+const minLengthPassw = minLengthPassowrd(8);
 const LoginForm = (props) => {
   return (
     <>
       <h2>Login</h2>
       <div className="LoginForm">
-        {/* <form onSubmit={props.handleSubmit(props.on_submit)}> */}
         <form onSubmit={props.handleSubmit}>
-          {" "}
-          {/* <form onSubmit={props.handleSubmit(props.onSubmit)}> */}
           <div>
             <Field
               placeholder="Email"
               component={Input}
-              validate={[required]}
+              validate={[required, email]}
               type="text"
               name="email"
             />
@@ -25,7 +24,7 @@ const LoginForm = (props) => {
             <Field
               placeholder="Password"
               component={Input}
-              validate={[required]}
+              validate={[required, minLengthPassw]}
               type="password"
               name="password"
             />
@@ -40,10 +39,13 @@ const LoginForm = (props) => {
             />
             <label htmlFor="rem">Remember</label>
           </div>
-          {/* button in form do auto submit */}
           <button>Submit</button>
         </form>
       </div>
+
+      {props.error && (
+        <div className={styles.commonErrorContainer}>{props.error}</div>
+      )}
     </>
   );
 };
