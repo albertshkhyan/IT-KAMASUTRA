@@ -14,16 +14,16 @@ const LoginForm = (props) => {
           {/* <form onSubmit={props.handleSubmit(props.onSubmit)}> */}
           <div>
             <Field
-              placeholder="login"
+              placeholder="Email"
               component={Input}
               validate={[required]}
               type="text"
-              name="login"
+              name="email"
             />
           </div>
           <div>
             <Field
-              placeholder="password"
+              placeholder="Password"
               component={Input}
               validate={[required]}
               type="password"
@@ -35,7 +35,7 @@ const LoginForm = (props) => {
               component={Input}
               validate={[required]}
               type="checkbox"
-              name="checkbox"
+              name="rememberMe"
               id="rem"
             />
             <label htmlFor="rem">Remember</label>
