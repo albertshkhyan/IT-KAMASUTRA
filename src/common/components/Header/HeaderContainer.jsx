@@ -6,7 +6,6 @@ import {
   authMeThunkCreator,
   logoutThunkCreator,
 } from "../../../redux/authReducer";
-import { Redirect } from "react-router-dom";
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
