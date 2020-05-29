@@ -9,6 +9,7 @@ import dialogPageReducer from './dialogPageReducer';
 import profilePageReducer from './profilePageReducer';
 import userPageReducer from './userPageReducer';
 import authReducer from './authReducer';
+import appReducer from './appReducer';
 
 const reducers = combineReducers({
     dialogPage: dialogPageReducer,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
     usersPage: userPageReducer,
     auth: authReducer,
     // you have to pass formReducer under 'form' key,
-    form: formReducer
+    form: formReducer,
+    appInit: appReducer
 });
 
 ////with compose
