@@ -9,16 +9,17 @@ import {
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
-    this.props.authMeThunkCreator(true);
+    this.props.authMeThunkCreator();
   }
   render() {
+    debugger
     return <Header {...this.props} />;
   }
 }
 
 const mapStateToProps = (state) => ({
   id: state.auth.id,
-  login: state.auth.login,
+  userName: state.auth.userName,
   email: state.auth.email,
   isAuth: state.auth.isAuth,
 });

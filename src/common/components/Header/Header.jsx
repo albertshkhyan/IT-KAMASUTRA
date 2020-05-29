@@ -4,6 +4,7 @@ import classes from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
+  debugger
   return (
     <header className={`${classes.Header} flexible jAround aCenter`}>
       <img
@@ -12,8 +13,10 @@ const Header = (props) => {
       />
       <div className={classes.loginCContainer}>
         {props.isAuth ? (
-          // <span className={classes.login}>{props.login}</span>
-          <button onClick={props.logoutThunkCreator}>Logout</button>
+          <div>
+            <button onClick={props.logoutThunkCreator}>Logout</button>
+            <span className={classes.login}>{props.userName}</span>
+          </div>
         ) : (
           <NavLink to="/login">Login</NavLink>
         )}

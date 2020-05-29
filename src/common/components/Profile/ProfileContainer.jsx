@@ -18,8 +18,9 @@ import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
+    debugger
     let { userID } = this.props.match.params;
-    if (!userID) userID = 7837;
+    if (!userID) userID = this.props.userID;
     this.props.profileThunkCreator(userID);
     this.props.getStatusAsyncActionCreator(userID);
   }
@@ -30,21 +31,16 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  debugger
   return {
+    userID:state.auth.id,
+    isAuth: state.auth.isAuth,
+    status: state.profilePage.status,
     isFetching: state.usersPage.isFetching,
     profileData: state.profilePage.profileData,
-    status: state.profilePage.status,
+    // userID: state
   };
 };
-
-// const AuthRedirectContainer = withRedirectAuth(ProfileContainer);
-
-// export default connect(mapStateToProps, {
-//   setUsers,
-//   setIsFetching,
-//   setProfileData,
-//   profileThunkCreator,
-// })(withRouter(AuthRedirectContainer));
 
 export default compose(
   connect(mapStateToProps, {
