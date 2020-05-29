@@ -37,7 +37,7 @@ function dialogPageReducer(state = initialState, action) {
 
 
 export const addNewMessageBody = (newMessage) => {
-    return ({ type: ADD_NEW_MESSAGE_BODY, newMessage })
+    return ({ type: ADD_NEW_MESSAGE_BODY, newMessage });
 };
 
 export default dialogPageReducer;
