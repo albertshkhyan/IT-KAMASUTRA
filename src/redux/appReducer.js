@@ -42,7 +42,6 @@ export const getAuthMeThunkCreator = (isAuth = true) => (dispatch) => {
 
 export const initilizeApp = () => (dispatch) => {
     const promise = dispatch(getAuthMeThunkCreator());//recognize user
-    debugger
     //dispatch(otherActionCreator1())//set theme
     //dispatch(otherActionCreator2())//set language
     /**
@@ -50,7 +49,7 @@ export const initilizeApp = () => (dispatch) => {
      * /if we have several dispatch we can use Promise.all
      */
     Promise.all([promise]).then((res) => {
-        debugger
+
         dispatch(initilizeSuccess());
     })
 }

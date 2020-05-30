@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import DialogsContainer from './common/components/Dialogs/DialogsContainer';
 import UsersContainer from './common/components/Users/UsersContainer';
 import Dashboard from './common/components/Dashboard/Dashboard';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import ProfileContainer from './common/components/Profile/ProfileContainer';
@@ -25,10 +25,12 @@ class App extends Component {
           <HeaderContainer />
           <Dashboard />
           <div className="app-wrapper-content">
-            <Route exact path="/dialogs" render={() => <DialogsContainer />} />
-            <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
-            <Route path="/users" render={() => <UsersContainer />} />
-            <Route path="/login" render={() => <Login />} />
+            <Switch>
+              <Route exact path="/dialogs" render={() => <DialogsContainer />} />
+              <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
+              <Route path="/users" render={() => <UsersContainer />} />
+              <Route path="/login" render={() => <Login />} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>
