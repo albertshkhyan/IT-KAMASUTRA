@@ -13,8 +13,8 @@ import appReducer from './appReducer';
 
 const reducers = combineReducers({
     dialogPage: dialogPageReducer,
-    profilePage: profilePageReducer,
-    usersPage: userPageReducer,
+    profile: profilePageReducer,
+    users: userPageReducer,
     auth: authReducer,
     // you have to pass formReducer under 'form' key,
     form: formReducer,

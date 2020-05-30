@@ -15,6 +15,13 @@ import {
 import Profile from "./Profile";
 
 // import withRedirectAuth from "../../../hoc/withRedirectAuth";
+import {
+  getUserId,
+  getIsAuth,
+  getStatus,
+  getProfileData,
+  getIsFetching,
+} from "./../../../redux/userSelectors";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -41,11 +48,11 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    userID: state.auth.id,
-    isAuth: state.auth.isAuth,
-    status: state.profilePage.status,
-    isFetching: state.usersPage.isFetching,
-    profileData: state.profilePage.profileData,
+    userID: getUserId(state),
+    isAuth: getIsAuth(state),
+    status: getStatus(state),
+    isFetching: getIsFetching(state),
+    profileData: getProfileData(state),
     // userID: state
   };
 };

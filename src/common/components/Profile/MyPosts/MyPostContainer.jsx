@@ -8,8 +8,8 @@ import {
 const mapStateToProps = (state) => {
   // console.log('mpaStateToProps Work Every time when change props ✅');
   return {
-    posts: state.profilePage.posts,
-    newPostText: state.profilePage.newPostText,
+    posts: state.profile.posts,
+    newPostText: state.profile.newPostText,
   };
 };
 const mapDispatchToProps = (dispatch) => {
