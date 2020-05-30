@@ -30,7 +30,7 @@ export const setUserData = (id, userName, email, isAuth) => ({
     }
 });
 
-export const authMeThunkCreator = (isAuth = true) => (dispatch) => {
+export const getAuthMeThunkCreator = (isAuth = true) => (dispatch) => {
     authAPI.authMe()
         .then(({ data }) => {
             if (data.resultCode === 0) {
@@ -44,7 +44,7 @@ export const loginThunkCreator = (email, password, rememberMe) => (dispatch) => 
     authAPI.login(email, password, rememberMe)
         .then(({ data }) => {
             if (data.resultCode === 0) {
-                dispatch(authMeThunkCreator()); 
+                dispatch(getAuthMeThunkCreator()); 
             }
             else {
                 // dispatch(stopSubmit("login", { password: "Not Correct password" }));

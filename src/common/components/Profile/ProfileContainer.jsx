@@ -18,9 +18,18 @@ import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    debugger
     let { userID } = this.props.match.params;
-    if (!userID) userID = this.props.userID;
+    if (!userID) {
+      userID = this.props.userID;
+      if (!userID) {
+        /**
+         * push(path, state)
+         * we can do redirect without Redirect component, like this
+         */
+
+        this.props.history.push("/login");
+      }
+    }
     this.props.profileThunkCreator(userID);
     this.props.getStatusAsyncActionCreator(userID);
   }
@@ -31,9 +40,8 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger
   return {
-    userID:state.auth.id,
+    userID: state.auth.id,
     isAuth: state.auth.isAuth,
     status: state.profilePage.status,
     isFetching: state.usersPage.isFetching,
