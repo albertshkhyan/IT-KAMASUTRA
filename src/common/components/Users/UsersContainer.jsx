@@ -4,7 +4,7 @@ import {
   followAsyncAC,
   setCurrentPage,
   unfollowAsyncAC,
-  getUsersAsncAC, 
+  getUsersAsncAC,
   toggleFollowingInProgress,
 } from "../../../redux/userPageReducer";
 
@@ -12,32 +12,28 @@ import Preloader from "./../Preloader/Preloader";
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
+import {
+  getUsers,
+  getPageSize,
+  getIsFetching,
+  getTotalCount,
+  getCurrentPage,
+  getFollowingInProgress,
+} from "./../../../redux/userSelectors";
 
 class UserContainer extends React.Component {
   componentDidMount() {
     this.props.getUsersAsncAC(this.props.currentPage, this.props.pageSize);
-    // this.props.setIsFetching(true);
-    // APIRequests.getUsers(this.props.currentPage, this.props.pageSize).then(
-    //   (data) => {
-    //     this.props.setIsFetching(false);
-    //     this.props.setUsers(data.items);
-    //     this.props.setTotalCount(data.totalCount);
-    //   }
-    // );
   }
 
   onActiveClick = (currentPage) => {
     this.props.setCurrentPage(currentPage);
     this.props.getUsersAsncAC(currentPage, this.props.pageSize);
-    
-    // APIRequests.getUsers(currentPage, this.props.pageSize).then((data) => {
-    //   this.props.setIsFetching(false);
-    //   this.props.setUsers(data.items);
-    //   this.props.setTotalCount(data.totalCount);
-    // });
   };
 
   render() {
+    console.log("RENDER - USERCONTAINER 😜 ");
+
     return (
       <>
         {/* {this.props.isFetching && <Preloader />} */}
@@ -51,10 +47,10 @@ class UserContainer extends React.Component {
           totalCount={this.props.totalCount}
           onActiveClick={this.onActiveClick}
           currentPage={this.props.currentPage}
-          followAsyncAC = {this.props.followAsyncAC}
-          unfollowAsyncAC = {this.props.unfollowAsyncAC}
-          followingInProgress = {this.props.followingInProgress}
-          toggleFollowingInProgress = {this.props.toggleFollowingInProgress}
+          followAsyncAC={this.props.followAsyncAC}
+          unfollowAsyncAC={this.props.unfollowAsyncAC}
+          followingInProgress={this.props.followingInProgress}
+          toggleFollowingInProgress={this.props.toggleFollowingInProgress}
         />
       </>
     );
@@ -62,13 +58,14 @@ class UserContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps -> Users 🙋‍♀️');
   return {
-    users: state.users.users,
-    totalCount: state.users.totalCount,
-    currentPage: state.users.currentPage,
-    pageSize: state.users.pageSize,
-    isFetching: state.users.isFetching,
-    followingInProgress : state.users.followingInProgress
+    users: getUsers(state),
+    totalCount: getTotalCount(state),
+    currentPage: getCurrentPage(state),
+    pageSize: getPageSize(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
   };
 };
 
@@ -89,7 +86,7 @@ export default connect(mapStateToProps, {
   unfollow,
   setCurrentPage,
   getUsersAsncAC,
-  toggleFollowingInProgress,  
+  toggleFollowingInProgress,
   followAsyncAC,
-  unfollowAsyncAC
+  unfollowAsyncAC,
 })(UserContainer);

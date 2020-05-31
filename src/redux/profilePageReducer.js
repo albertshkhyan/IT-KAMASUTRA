@@ -29,11 +29,13 @@ const initialState = {
         }
     ],
     profileData: null,
-    status: ""
+    status: "",
+    fake : 10
 }
 
 function profilePageReducer(state = initialState, action) {
     switch (action.type) {
+        case "FAKE" : return {...state, fake: state.fake + 1};
         case ADD_POST:
             let id = +state.posts[state.posts.length - 1].id + 1 + '';
             return {

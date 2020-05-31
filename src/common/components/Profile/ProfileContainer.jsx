@@ -16,6 +16,7 @@ import Profile from "./Profile";
 
 // import withRedirectAuth from "../../../hoc/withRedirectAuth";
 import {
+  getUsers,
   getUserId,
   getIsAuth,
   getStatus,
@@ -42,13 +43,13 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    console.log('render');
+    console.log('RENDER - PROFILE_CONTAINER 👽');
     return <Profile {...this.props} />;
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps');
+  console.log('mapStateToProps 🙋‍♀️');
   return {
     userID: getUserId(state),
     isAuth: getIsAuth(state),
@@ -60,6 +61,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
+    getUsers,
     setUsers,
     setIsFetching,
     setProfileData,

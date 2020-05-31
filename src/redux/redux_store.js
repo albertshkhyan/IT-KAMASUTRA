@@ -22,7 +22,7 @@ const reducers = combineReducers({
 });
 
 ////with compose
-const middlware = [thunk, logger];
+const middlware = [thunk];
 const store = createStore(reducers,
     compose(
         applyMiddleware(...middlware),

@@ -10,6 +10,9 @@ import { Provider } from "react-redux";
 
 window.store = store;
 
+setInterval(() => {
+  store.dispatch({type:"FAKE"});
+}, 1000);
 
   ReactDOM.render(
     <Provider store={store}>
