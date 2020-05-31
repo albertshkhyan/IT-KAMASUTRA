@@ -42,18 +42,19 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    console.log('render');
     return <Profile {...this.props} />;
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps');
   return {
     userID: getUserId(state),
     isAuth: getIsAuth(state),
     status: getStatus(state),
     isFetching: getIsFetching(state),
     profileData: getProfileData(state),
-    // userID: state
   };
 };
 
