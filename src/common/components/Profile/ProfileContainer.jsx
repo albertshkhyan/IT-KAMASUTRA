@@ -15,6 +15,14 @@ import {
 import Profile from "./Profile";
 
 // import withRedirectAuth from "../../../hoc/withRedirectAuth";
+import {
+  getUsers,
+  getUserId,
+  getIsAuth,
+  getStatus,
+  getProfileData,
+  getIsFetching,
+} from "./../../../redux/userSelectors";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -35,23 +43,25 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    console.log('RENDER - PROFILE_CONTAINER 👽');
     return <Profile {...this.props} />;
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps 🙋‍♀️');
   return {
-    userID: state.auth.id,
-    isAuth: state.auth.isAuth,
-    status: state.profilePage.status,
-    isFetching: state.usersPage.isFetching,
-    profileData: state.profilePage.profileData,
-    // userID: state
+    userID: getUserId(state),
+    isAuth: getIsAuth(state),
+    status: getStatus(state),
+    isFetching: getIsFetching(state),
+    profileData: getProfileData(state),
   };
 };
 
 export default compose(
   connect(mapStateToProps, {
+    getUsers,
     setUsers,
     setIsFetching,
     setProfileData,
