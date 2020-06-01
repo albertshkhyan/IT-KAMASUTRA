@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const StatusProfileWithHooks = (props) => {
-    debugger;
-    console.log('useState', useState);
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(props.status);
 
@@ -17,6 +15,9 @@ const StatusProfileWithHooks = (props) => {
   const onStatusChangge = (event) => {
     setStatus(event.target.value);
   };
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
 
   return (
     <div className="StatusProfile">
