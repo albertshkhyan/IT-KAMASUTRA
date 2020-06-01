@@ -2,7 +2,8 @@ import React from "react";
 
 import classes from "./style.module.css";
 import Preloader from "./../../Preloader/Preloader";
-import StatusProfile from "./StatusProfile";
+// import StatusProfile from "./StatusProfile";
+import StatusProfileWithHooks from "../StatusProfileWithHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profileData) {
@@ -16,10 +17,14 @@ const ProfileInfo = (props) => {
         </div>
         <div className={classes.avatarDescription}>
           {" "}
-          <StatusProfile
+          <StatusProfileWithHooks
             status={props.status}
             updateStatus={props.updateStatus}
           />
+          {/* <StatusProfile
+            status={props.status}
+            updateStatus={props.updateStatus}
+          /> */}
           <div>
             <h3>{props.profileData.fullName}</h3>
           </div>
