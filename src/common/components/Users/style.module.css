@@ -63,8 +63,8 @@
 }
 
 .btn:disabled {
-  background: gray !important;
   cursor: wait;
+  background: gray !important;
 }
 
 .btnShowMoreContaoner {

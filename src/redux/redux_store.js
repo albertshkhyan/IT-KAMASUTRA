@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as formReducer } from "redux-form";
 
 
-import logger from "redux-logger";
+// import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 import dialogPageReducer from './dialogPageReducer';
@@ -22,7 +22,7 @@ const reducers = combineReducers({
 });
 
 ////with compose
-const middlware = [thunk, logger];
+const middlware = [thunk];
 const store = createStore(reducers,
     compose(
         applyMiddleware(...middlware),

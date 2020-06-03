@@ -138,6 +138,7 @@ export const followAsyncAC = (item) => (dispatch) => {
 }
 
 export const unfollowAsyncAC = (item) => (dispatch) => {
+    
     dispatch(toggleFollowingInProgress(true, item.id));
     usersAPI.deleteFollow(item.id).then(({data}) => {
         if (data.resultCode === 0) {

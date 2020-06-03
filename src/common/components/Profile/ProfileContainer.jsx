@@ -43,19 +43,27 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    console.log('RENDER - PROFILE_CONTAINER 👽');
-    return <Profile {...this.props} />;
+    // console.log('RENDER - PROFILE_CONTAINER 👽');
+    return (
+      <Profile
+        {...this.props}
+      />
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps 🙋‍♀️');
+  // console.log('mapStateToProps 🙋‍♀️');
   return {
-    userID: getUserId(state),
-    isAuth: getIsAuth(state),
-    status: getStatus(state),
-    isFetching: getIsFetching(state),
-    profileData: getProfileData(state),
+    // userID: getUserId(state),
+    // isAuth: getIsAuth(state),
+    // status: getStatus(state),
+    // profileData: getProfileData(state),
+    //////////
+    userID: state.auth.id, //
+    isAuth: state.auth.isAuth, //
+    status: state.profile.status, //
+    profileData: state.profile.profileData, //
   };
 };
 

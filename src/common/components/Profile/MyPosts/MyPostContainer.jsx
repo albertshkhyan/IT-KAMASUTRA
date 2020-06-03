@@ -1,9 +1,7 @@
 import MyPosts from "./MyPosts";
 
 import { connect } from "react-redux";
-import {
-  addPostActionCreator,
-} from "./../../../../redux/profilePageReducer";
+import { addPostActionCreator } from "./../../../../redux/profilePageReducer";
 
 const mapStateToProps = (state) => {
   // console.log('mpaStateToProps Work Every time when change props ✅');

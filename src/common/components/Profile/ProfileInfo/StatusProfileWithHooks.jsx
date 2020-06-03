@@ -8,8 +8,9 @@ const StatusProfileWithHooks = (props) => {
   const activeEditMode = () => {
     setEditMode(true);
   };
-  const deActivateEditMode = () => {
+  const deActivateEditMode = (event) => {
     setEditMode(false);
+    props.updateStatus(event.target.value);
   };
 
   const onStatusChangge = (event) => {
