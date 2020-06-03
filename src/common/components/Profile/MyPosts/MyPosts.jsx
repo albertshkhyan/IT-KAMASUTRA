@@ -6,7 +6,6 @@ import MyPostsForm from "./MyPostsForm";
 
 
 const MyPosts = (props) => {
-  console.log("Render MyPosts", props);
   const postsElement = props.posts.map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likesCount={likesCount} />
   ));

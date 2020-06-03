@@ -30,11 +30,6 @@ class ProfileContainer extends React.Component {
     if (!userID) {
       userID = this.props.userID;
       if (!userID) {
-        /**
-         * push(path, state)
-         * we can do redirect without Redirect component, like this
-         */
-
         this.props.history.push("/login");
       }
     }
@@ -43,7 +38,6 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    // console.log('RENDER - PROFILE_CONTAINER 👽');
     return (
       <Profile
         {...this.props}
@@ -53,17 +47,16 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('mapStateToProps 🙋‍♀️');
   return {
-    // userID: getUserId(state),
-    // isAuth: getIsAuth(state),
-    // status: getStatus(state),
-    // profileData: getProfileData(state),
+    userID: getUserId(state),
+    isAuth: getIsAuth(state),
+    status: getStatus(state),//with reselect
+    profileData: getProfileData(state),
     //////////
-    userID: state.auth.id, //
-    isAuth: state.auth.isAuth, //
-    status: state.profile.status, //
-    profileData: state.profile.profileData, //
+    // userID: state.auth.id, 
+    // isAuth: state.auth.isAuth, 
+    // status: state.profile.status, 
+    // profileData: state.profile.profileData, 
   };
 };
 

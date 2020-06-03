@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { addPostActionCreator } from "./../../../../redux/profilePageReducer";
 
 const mapStateToProps = (state) => {
-  // console.log('mpaStateToProps Work Every time when change props ✅');
   return {
     posts: state.profile.posts,
     newPostText: state.profile.newPostText,

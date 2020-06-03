@@ -6,9 +6,6 @@ import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const submit = (values) => {
-    //pass values from store.getState().form
-    //NOTE - In here we can call ascyn actions - for validation
-    // console.log("some", some);
     let { email, password, rememberMe } = values;
     props.loginThunkCreator(email, password, rememberMe);
   };

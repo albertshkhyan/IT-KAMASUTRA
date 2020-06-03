@@ -6,8 +6,6 @@ import MyPostContainer from "./MyPosts/MyPostContainer";
 // window.prf = [];
 
 const Profile = (props) => {
-  // console.log('Profile props');
-  // window.prf.push(props);
   return (
     <div className={classes.Profile}>
       <ProfileInfo

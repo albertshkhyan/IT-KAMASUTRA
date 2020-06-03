@@ -34,8 +34,6 @@ class UserContainer extends React.Component {
   };
 
   render() {
-    // console.log("RENDER - USERCONTAINER 😜 ");
-    // window.usrc.push(this.props);
     return (
       <>
         {/* {this.props.isFetching && <Preloader />} */}
