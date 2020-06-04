@@ -6,7 +6,19 @@ import MyPostsForm from "./MyPostsForm";
 
 
 const MyPosts = (props) => {
-  const postsElement = props.posts.map(({ id, message, likesCount }) => (
+  /**
+   * Imutable
+   * pure function always return something.
+   * No side effect.
+   * determination ( idempotency )
+   */
+  ////⛔ mutate BLL
+  // const postsElement = props.posts.reverse().map(({ id, message, likesCount }) => (
+  //   <Post key={id} message={message} likesCount={likesCount} />
+  // ));
+
+  ////💹 shallow coppy - not mutate BLL
+  const postsElement = [...props.posts].reverse().map(({ id, message, likesCount }) => (
     <Post key={id} message={message} likesCount={likesCount} />
   ));
 
