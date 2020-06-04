@@ -21,6 +21,8 @@ import {
   getFollowingInProgress,
 } from "./../../../redux/userSelectors";
 
+// window.usrc = [];
+
 class UserContainer extends React.Component {
   componentDidMount() {
     this.props.getUsersAsncAC(this.props.currentPage, this.props.pageSize);
@@ -32,8 +34,6 @@ class UserContainer extends React.Component {
   };
 
   render() {
-    console.log("RENDER - USERCONTAINER 😜 ");
-
     return (
       <>
         {/* {this.props.isFetching && <Preloader />} */}
@@ -58,7 +58,6 @@ class UserContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps -> Users 🙋‍♀️');
   return {
     users: getUsers(state),
     totalCount: getTotalCount(state),

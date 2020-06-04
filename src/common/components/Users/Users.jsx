@@ -65,14 +65,6 @@ const UserItem = (props) => {
                     className={`${classes.btn} ${classes.unfollow} `}
                     onClick={() => {
                       props.unfollowAsyncAC(item);
-
-                      // props.toggleFollowingInProgress(true, item.id);
-                      // APIRequests.deleteFollow(item.id).then((data) => {
-                      //   if (data.resultCode === 0) {
-                      //     props.unfollow(item.id);
-                      //   }
-                      //   props.toggleFollowingInProgress(false, item.id);
-                      // });
                     }}
                   >
                     UNFOLLOW
@@ -85,14 +77,6 @@ const UserItem = (props) => {
                     className={`${classes.btn} ${classes.follow}`}
                     onClick={() => {
                       props.followAsyncAC(item);
-
-                      // props.toggleFollowingInProgress(true, item.id);
-                      // APIRequests.postFollw(item.id).then((data) => {
-                      //   if (data.resultCode === 0) {
-                      //     props.follow(item.id);
-                      //   }
-                      //   props.toggleFollowingInProgress(false, item.id);
-                      // });
                     }}
                   >
                     FOLLOW
