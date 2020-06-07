@@ -4,7 +4,7 @@ const ADD_POST = "ADD_POST";
 const PROFILE = "PROFILE";
 const SET_STATUS = "SET_STATUS";
 
-
+ 
 const initialState = {
     posts: [
         {
@@ -32,7 +32,7 @@ const initialState = {
     status: "",
     fake : 10
 }
-
+// D:/REACT/IT-kamasutra-experiment/my-app/src
 function profilePageReducer(state = initialState, action) {
     switch (action.type) {
         // case "FAKE" : return {...state, fake: state.fake + 1};
