@@ -21,7 +21,6 @@ import {
   getIsAuth,
   getStatus,
   getProfileData,
-  getIsFetching,
 } from "./../../../redux/userSelectors";
 
 class ProfileContainer extends React.Component {
