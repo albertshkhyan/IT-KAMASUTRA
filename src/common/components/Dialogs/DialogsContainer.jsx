@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import withRedirectAuth from "../../../hoc/withRedirectAuth";
-import { addNewMessageBody } from "./../../../redux/dialogPageReducer";
+import { addNewMessageBody } from "../../../redux/dialogReducer";
 
 const mapStateToProps = (state) => {
   return {

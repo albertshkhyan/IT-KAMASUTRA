@@ -5,15 +5,15 @@ import Message from "./Message/Message";
 
 import classes from "./style.module.css";
 import { Field, reduxForm } from "redux-form";
-import Textarea from './../../FormControl/Textarea/Textarea';
-import { required, maxLength } from './../../../utils/validators';
+import Textarea from "./../../FormControl/Textarea/Textarea";
+import { required, maxLength } from "./../../../utils/validators";
+import { createField } from "./../../FormControl/FormControl";
 
 const Dialogs = (props) => {
   const state = props.dialogPage;
-  const messagesElements = state.messages.map(
-    ({ id, message }) =>
+  const messagesElements = state.messages.map(({ id, message }) => (
     <Message key={id} message={message} id={id} />
-  );
+  ));
 
   const dialogElements = state.dialogs.map(({ name, id }) => (
     <DialogItem key={id} name={name} id={id} />
@@ -28,33 +28,26 @@ const Dialogs = (props) => {
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>{dialogElements}</div>
 
-      <div className={classes.messages}>
-        {messagesElements}
-    
-      </div>
+      <div className={classes.messages}>{messagesElements}</div>
       <div>
-          <AddNewMessageFormRedux onSubmit={onAddNewMessage} />
-        </div>
+        <AddNewMessageFormRedux onSubmit={onAddNewMessage} />
+      </div>
     </div>
   );
 };
 
-const maxLengthMessage = maxLength(100);//validator creator
+const maxLengthMessage = maxLength(100); //validator creator
 
 const AddNewMessageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
-      {/* <textarea
-        onChange={handleOnChange}
-        value={props.dialogPage.new_message_body}
-        placeholder="Enter your message"
-      ></textarea> */}
-      <Field
-        name="message"
-        placeholder="Enter your message"
-        component={Textarea}
-        validate={[required, maxLengthMessage]}
-      />
+      {createField(
+        Textarea,
+        [required, maxLengthMessage],
+        "",
+        "message",
+        "Enter your message"
+      )}
       <div>
         <button>ADD MESSAGE</button>
       </div>

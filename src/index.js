@@ -7,6 +7,7 @@ import store from './redux/redux_store';
 // import { Provider } from "./createMyContext";
 
 import { Provider } from "react-redux";
+import { BrowserRouter } from 'react-router-dom';
 
 window.store = store;
 
@@ -14,14 +15,17 @@ window.store = store;
 //   store.dispatch({type:"FAKE"});
 // }, 1000);
 
-  ReactDOM.render(
+ReactDOM.render(
+  <BrowserRouter>
     <Provider store={store}>
       <App />
-    </Provider>,
-    document.getElementById('root')
-  );
+    </Provider>
+  </BrowserRouter>
+  ,
+  document.getElementById('root')
+);
 
-  ////when we download redux-logger middleware we don't need it 👇
+////when we download redux-logger middleware we don't need it 👇
 // store.subscribe(() => {
 //   console.log(store.getState());
 // });

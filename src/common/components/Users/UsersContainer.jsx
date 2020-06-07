@@ -6,7 +6,7 @@ import {
   unfollowAsyncAC,
   getUsersAsncAC,
   toggleFollowingInProgress,
-} from "../../../redux/userPageReducer";
+} from "../../../redux/userReducer";
 
 import Preloader from "./../Preloader/Preloader";
 import React from "react";
@@ -34,23 +34,35 @@ class UserContainer extends React.Component {
   };
 
   render() {
+    const {
+      users,
+      follow,
+      pageSize,
+      unfollow,
+      totalCount,
+      isFetching,
+      currentPage,
+      followAsyncAC,
+      unfollowAsyncAC,
+      followingInProgress,
+      toggleFollowingInProgress,
+    } = this.props;
     return (
       <>
-        {/* {this.props.isFetching && <Preloader />} */}
-        {this.props.isFetching ? <Preloader /> : null}
+        {isFetching ? <Preloader /> : null}
 
         <Users
-          users={this.props.users}
-          follow={this.props.follow}
-          pageSize={this.props.pageSize}
-          unfollow={this.props.unfollow}
-          totalCount={this.props.totalCount}
+          users={users}
+          follow={follow}
+          pageSize={pageSize}
+          unfollow={unfollow}
+          totalCount={totalCount}
           onActiveClick={this.onActiveClick}
-          currentPage={this.props.currentPage}
-          followAsyncAC={this.props.followAsyncAC}
-          unfollowAsyncAC={this.props.unfollowAsyncAC}
-          followingInProgress={this.props.followingInProgress}
-          toggleFollowingInProgress={this.props.toggleFollowingInProgress}
+          currentPage={currentPage}
+          followAsyncAC={followAsyncAC}
+          unfollowAsyncAC={unfollowAsyncAC}
+          followingInProgress={followingInProgress}
+          toggleFollowingInProgress={toggleFollowingInProgress}
         />
       </>
     );

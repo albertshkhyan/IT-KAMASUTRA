@@ -5,16 +5,16 @@ import { reducer as formReducer } from "redux-form";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-import dialogPageReducer from './dialogPageReducer';
-import profilePageReducer from './profilePageReducer';
-import userPageReducer from './userPageReducer';
+import dialogPageReducer from './dialogReducer';
+import profilePageReducer from './profileReducer';
+import userReducer from './userReducer';
 import authReducer from './authReducer';
 import appReducer from './appReducer';
 
 const reducers = combineReducers({
     dialogPage: dialogPageReducer,
     profile: profilePageReducer,
-    users: userPageReducer,
+    users: userReducer,
     auth: authReducer,
     // you have to pass formReducer under 'form' key,
     form: formReducer,
