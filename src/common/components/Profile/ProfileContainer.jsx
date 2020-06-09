@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 
-import { setIsFetching, setUsers } from "../../../redux/userPageReducer";
+import { setIsFetching, setUsers } from "../../../redux/userReducer";
 import {
   setProfileData,
   updateStatusAAC,
   profileThunkCreator,
   getStatusAsyncActionCreator,
-} from "./../../../redux/profilePageReducer";
+} from "../../../redux/profileReducer";
 
 import Profile from "./Profile";
 
@@ -21,7 +21,6 @@ import {
   getIsAuth,
   getStatus,
   getProfileData,
-  getIsFetching,
 } from "./../../../redux/userSelectors";
 
 class ProfileContainer extends React.Component {

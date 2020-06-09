@@ -30,36 +30,27 @@ export const setUserData = (id, userName, email, isAuth) => ({
     }
 });
 
-export const getAuthMeThunkCreator = (isAuth = true) => (dispatch) => {
-    authAPI.authMe()
-        .then(({ data }) => {
-            if (data.resultCode === 0) {
-                const { id, login, email } = data.data;
-                dispatch(setUserData(id, login, email, isAuth));
-            }
-        });
+export const getAuthMeThunkCreator = (isAuth = true) => async (dispatch) => {
+    const { data } = await authAPI.authMe();
+    if (data.resultCode === 0) {
+        const { id, login, email } = data.data;
+        dispatch(setUserData(id, login, email, isAuth));
+    }
 }
 
-export const loginThunkCreator = (email, password, rememberMe) => (dispatch) => {
-    authAPI.login(email, password, rememberMe)
-        .then(({ data }) => {
-            if (data.resultCode === 0) {
-                dispatch(getAuthMeThunkCreator()); 
-            }
-            else {
-                // dispatch(stopSubmit("login", { password: "Not Correct password" }));
-                ////common erro -> Please enter your Email 😅😅
-                dispatch(stopSubmit("login", { _error: data.messages[0] }));
-            }
-        });
+export const loginThunkCreator = (email, password, rememberMe) => async (dispatch) => {
+    const { data } = await authAPI.login(email, password, rememberMe);
+    (data.resultCode === 0) ? (
+        dispatch(getAuthMeThunkCreator())
+    ) : (
+            dispatch(stopSubmit("login", { _error: data.messages[0] }))
+        )
 }
-export const logoutThunkCreator = () => (dispatch) => {
-    authAPI.logout()
-        .then(({ data }) => {
-            if (data.resultCode === 0) {
-                dispatch(setUserData(null, null, null, false));
-            }
-        });
+export const logoutThunkCreator = () => async (dispatch) => {
+    const { data } = await authAPI.logout();
+    if (data.resultCode === 0) {
+        dispatch(setUserData(null, null, null, false));
+    }
 }
 
 export default authReducer;
