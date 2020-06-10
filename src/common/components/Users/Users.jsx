@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./style.module.css";
-import Pagination from './../../Pagination/Pagination';
+import Pagination from './../../Pagination/Paginator';
 import User from './User';
 
 const Users = ({
@@ -23,6 +23,7 @@ const Users = ({
         pageSize={pageSize}
         totalCount={totalCount}
         currentPage={currentPage}
+        portionSize={7}
         onActiveClick={onActiveClick}
       />
       <User

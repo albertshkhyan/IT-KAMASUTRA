@@ -1,14 +1,18 @@
-.paginationContainer {
-  width: 400px;
-  overflow: auto;
-}
+/* .paginationContainer {
+
+} */
 
 .paginContent {
-  width: max-content;
   cursor: pointer;
+  display: flex;
+
 }
+.paginContent  div  {
+  border: 1px solid;
+  padding: 2px 5px;
+}
+
 
 .active {
   font-weight: bold;
-  font-size: 1.2em;
 }
