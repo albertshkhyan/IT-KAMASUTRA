@@ -28,7 +28,7 @@ const LoginForm = (props) => {
               "Password"
             )}
           </div>
-          <div className="flexible">
+          <div className="flexible horizontal">
             {createField(
               Input,
               [],
