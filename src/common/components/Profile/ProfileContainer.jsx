@@ -6,6 +6,7 @@ import { compose } from "redux";
 
 import { setIsFetching, setUsers } from "../../../redux/userReducer";
 import {
+  saveImage,
   setProfileData,
   updateStatusAAC,
   profileThunkCreator,
@@ -25,7 +26,7 @@ import {
 
 class ProfileContainer extends React.Component {
   updataeProfil = () => {
-    let { userID } = this.props.match.params;
+    let { userID } = this.props.match.params;//take ID of another user
     if (!userID) {
       userID = this.props.userID;
       if (!userID) {
@@ -75,6 +76,7 @@ export default compose(
   connect(mapStateToProps, {
     getUsers,
     setUsers,
+    saveImage,
     setIsFetching,
     setProfileData,
     updateStatusAAC,

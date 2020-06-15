@@ -12,6 +12,8 @@ const Profile = (props) => {
         profileData={props.profileData}
         status={props.status}
         updateStatus={props.updateStatusAAC}
+        isOwner = {!props.match.params.userID}
+        saveImage = {props.saveImage}
       />
       <MyPostContainer />
     </div>
