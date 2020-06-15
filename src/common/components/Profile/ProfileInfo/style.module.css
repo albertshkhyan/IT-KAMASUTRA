@@ -1,3 +1,9 @@
 .avatarDescription {
     padding-left: 10px;
 }
+.imageContainer {
+    max-width: 200px;
+}
+.imageContainer  img {
+    width: 100%;
+}

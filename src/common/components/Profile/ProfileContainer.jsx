@@ -24,7 +24,7 @@ import {
 } from "./../../../redux/userSelectors";
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  updataeProfil = () => {
     let { userID } = this.props.match.params;
     if (!userID) {
       userID = this.props.userID;
@@ -35,8 +35,20 @@ class ProfileContainer extends React.Component {
     this.props.profileThunkCreator(userID);
     this.props.getStatusAsyncActionCreator(userID);
   }
+  componentDidMount() {
+    this.updataeProfil();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.match.params.userID !== this.props.match.params.userID) {
+      this.updataeProfil();
+    }
+  }
+  
 
   render() {
+    console.log('this.props', this.props);
+    
     return (
       <Profile
         {...this.props}
