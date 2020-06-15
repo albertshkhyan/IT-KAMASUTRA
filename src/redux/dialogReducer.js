@@ -1,4 +1,4 @@
-const ADD_NEW_MESSAGE_BODY = "ADD_NEW_MESSAGE_BODY";
+const ADD_NEW_MESSAGE_BODY = "social-network/dialogReducer/ADD_NEW_MESSAGE_BODY";
 
 const initialState = {
     messages: [
@@ -36,8 +36,6 @@ function dialogPageReducer(state = initialState, action) {
 }
 
 
-export const addNewMessageBody = (newMessage) => {
-    return ({ type: ADD_NEW_MESSAGE_BODY, newMessage });
-};
+export const addNewMessageBody = (newMessage) => ({ type: ADD_NEW_MESSAGE_BODY, newMessage });
 
 export default dialogPageReducer;

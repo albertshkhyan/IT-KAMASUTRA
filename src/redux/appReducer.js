@@ -1,8 +1,8 @@
 import { authAPI } from "../api/api";
 
 
-const INITILIZE_SUCCESS = "INITILIZE_SUCCESS";
-const SET_USER_DATA = "SET_USER_DATA";
+const INITILIZE_SUCCESS = "social-network/appReducer/INITILIZE_SUCCESS";
+const SET_USER_DATA = "social-network/appReducer/SET_USER_DATA";
 
 const initialState = {
     initilized: false
