@@ -5,7 +5,9 @@ import { loginThunkCreator } from "../../../redux/authReducer";
 import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
+  debugger
   const submit = (values) => {
+    debugger
     let { email, password, rememberMe } = values;
     props.loginThunkCreator(email, password, rememberMe);
   };

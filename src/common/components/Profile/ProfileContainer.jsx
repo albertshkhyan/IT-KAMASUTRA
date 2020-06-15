@@ -26,35 +26,33 @@ import {
 
 class ProfileContainer extends React.Component {
   updataeProfil = () => {
-    let { userID } = this.props.match.params;//take ID of another user
+    let { userID } = this.props.match.params; //take ID of another user
     if (!userID) {
       userID = this.props.userID;
       if (!userID) {
-        this.props.history.push("/login");
+        this.props.history.push("/login");//redirect when logout
       }
     }
     this.props.profileThunkCreator(userID);
     this.props.getStatusAsyncActionCreator(userID);
-  }
+  };
   componentDidMount() {
     this.updataeProfil();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.match.params.userID !== this.props.match.params.userID) {
+    if (
+      prevProps.match.params.userID !== this.props.match.params.userID ||
+      prevProps.userID !== this.props.userID
+    ) {
       this.updataeProfil();
     }
   }
-  
 
   render() {
-    console.log('this.props', this.props);
-    
-    return (
-      <Profile
-        {...this.props}
-      />
-    );
+    console.log("this.props", this.props);
+
+    return <Profile {...this.props} />;
   }
 }
 
@@ -62,13 +60,13 @@ const mapStateToProps = (state) => {
   return {
     userID: getUserId(state),
     isAuth: getIsAuth(state),
-    status: getStatus(state),//with reselect
+    status: getStatus(state), //with reselect
     profileData: getProfileData(state),
     //////////
-    // userID: state.auth.id, 
-    // isAuth: state.auth.isAuth, 
-    // status: state.profile.status, 
-    // profileData: state.profile.profileData, 
+    // userID: state.auth.id,
+    // isAuth: state.auth.isAuth,
+    // status: state.profile.status,
+    // profileData: state.profile.profileData,
   };
 };
 
