@@ -1,8 +1,8 @@
 import { authAPI } from "../api/api";
+import { setUserData } from './authReducer';
 
 
 const INITILIZE_SUCCESS = "social-network/appReducer/INITILIZE_SUCCESS";
-const SET_USER_DATA = "social-network/appReducer/SET_USER_DATA";
 
 const initialState = {
     initilized: false
@@ -18,15 +18,7 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserData = (id, userName, email, isAuth) => ({
-    type: SET_USER_DATA,
-    payload: {
-        id,
-        userName,
-        email,
-        isAuth
-    }
-});
+
 export const initilizeSuccess = () => ({ type: INITILIZE_SUCCESS });
 
 export const getAuthMeThunkCreator = (isAuth = true) => (dispatch) => {
