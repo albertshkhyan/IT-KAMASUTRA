@@ -14,6 +14,7 @@ const Profile = (props) => {
         profileData={props.profileData}
         updateStatus={props.updateStatusAAC}
         isOwner = {!props.match.params.userID}
+        saveProfile={props.saveProfile}
       />
       <MyPostContainer />
     </div>

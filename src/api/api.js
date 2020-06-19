@@ -8,32 +8,6 @@ const instance = axios.create({
     }
 });
 
-// const APIRequests = {
-//     getUsers(currentPage = 1, pageSize = 10) {
-//         return instance
-//             .get(`users/?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-//     },
-
-//     deleteFollow(id) {
-//         return instance
-//             .delete(`follow/${id}`).then(response => response.data);
-//     },
-
-//     postFollw(id) {//follwo fix name
-//         return instance
-//             .post(`follow/${id}`).then(response => response.data);
-//     },
-
-//     authMe() {
-//         return instance.get(`auth/me`).then(response => response.data);
-//     },
-
-//     profile(userID = 7837) {//ge4Me
-//         return instance
-//             .get(`profile/${userID}`).then(response => response.data);
-//     },
-// }
-
 const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance
@@ -81,7 +55,6 @@ const profileAPI = {
             .put("profile/status", { status });
     },
     saveImage(files) {
-    
         const formData = new FormData();
         formData.append("image", files);
         return instance
@@ -90,6 +63,10 @@ const profileAPI = {
                     "Content-Type": "multipart/form-data"
                 }
             })
+    },
+    saveProfile(values) {
+        return instance
+            .put("profile", values);
     }
 }
 

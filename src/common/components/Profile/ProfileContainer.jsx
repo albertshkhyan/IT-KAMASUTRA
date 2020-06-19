@@ -7,6 +7,7 @@ import { compose } from "redux";
 import { setIsFetching, setUsers } from "../../../redux/userReducer";
 import {
   saveImage,
+  saveProfile,
   setProfileData,
   updateStatusAAC,
   profileThunkCreator,
@@ -50,7 +51,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
 
     return <Profile {...this.props} />;
   }
@@ -75,6 +76,7 @@ export default compose(
     getUsers,
     setUsers,
     saveImage,
+    saveProfile,
     setIsFetching,
     setProfileData,
     updateStatusAAC,

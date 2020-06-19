@@ -47,11 +47,8 @@ export const loginThunkCreator = (email, password, rememberMe) => async (dispatc
         )
 }
 export const logoutThunkCreator = () => async (dispatch) => {
-    debugger
     const { data } = await authAPI.logout();
     if (data.resultCode === 0) {
-    debugger
-
         dispatch(setUserData(null, null, null, false));
     }
 }
