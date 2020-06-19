@@ -1,4 +1,4 @@
-* {
+  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -78,4 +78,10 @@
 }
 .flexible.noShrink {
   flex-shrink: 0;
+}
+.commonErrorContainer {
+  width: max-content;
+  border:1px solid #BF7A76;
+  background: #FEDCE0;
+  color: #BF7A76;
 }

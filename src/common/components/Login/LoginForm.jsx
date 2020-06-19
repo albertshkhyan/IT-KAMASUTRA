@@ -44,7 +44,7 @@ const LoginForm = (props) => {
       </div>
 
       {props.error && (
-        <div className={styles.commonErrorContainer}>{props.error}</div>
+        <div className="commonErrorContainer">{props.error}</div>
       )}
     </>
   );

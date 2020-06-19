@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import classes from "./style.module.css";
 
 const StatusProfileWithHooks = (props) => {
   const [editMode, setEditMode] = useState(false);
@@ -21,8 +22,8 @@ const StatusProfileWithHooks = (props) => {
   }, [props.status]);
 
   return (
-    <div className="StatusProfile">
-      <div className="statusCXontainer">
+    <div className={classes.StatusProfile}>
+      <div className={classes.statusContainer}>
         {editMode ? (
           <div>
             <input
@@ -34,7 +35,7 @@ const StatusProfileWithHooks = (props) => {
             />
           </div>
         ) : (
-          <div>
+          <div className={classes.statusContent}>
             <span onDoubleClick={activeEditMode}>
               {props.status || "no status"}
             </span>
